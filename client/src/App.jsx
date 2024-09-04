@@ -15,7 +15,7 @@ function App() {
           <img src={antiqueMachineLogo} className="logo react" alt="Antique Machine Logo" />
         </a>
       </div>
-      <h1>Tive's Thread and Thimble</h1>
+      <h1 fontFamily="Shadows Into Light Two, cursive">Tive's Thread and Thimble</h1>
     </>
   )
 }
