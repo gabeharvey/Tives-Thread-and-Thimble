@@ -1,11 +1,40 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useState } from 'react';
 import { Box, Heading, Text, Button, Image } from "@chakra-ui/react";
 import Slider from "react-slick";
+import { useSpring, animated } from '@react-spring/web';
+
+const createSpringProps = (flips, index) => {
+  return flips.map(flip =>
+    useSpring({
+      transform: `perspective(600px) rotateY(${flip ? 180 : 0}deg)`,
+      config: { mass: 5, tension: 800, friction: 80 },
+    })
+  )[index];
+};
 
 const Home = () => {
+  const [fashionFlipped, setFashionFlipped] = useState([false, false, false]);
+  const [foodFlipped, setFoodFlipped] = useState([false, false, false]);
+
+  const handleFlip = (index, type) => {
+    if (type === 'fashion') {
+      const newFlipped = [...fashionFlipped];
+      newFlipped[index] = !newFlipped[index];
+      setFashionFlipped(newFlipped);
+    } else if (type === 'food') {
+      const newFlipped = [...foodFlipped];
+      newFlipped[index] = !newFlipped[index];
+      setFoodFlipped(newFlipped);
+    }
+  };
+
+  const fashionSpringProps = fashionFlipped.map((flip, index) => createSpringProps(fashionFlipped, index));
+  const foodSpringProps = foodFlipped.map((flip, index) => createSpringProps(foodFlipped, index));
+
   const settings = {
-    dots: false, 
-    arrows: false, 
+    dots: false,
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -23,9 +52,9 @@ const Home = () => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2, 
+          slidesToShow: 2,
           slidesToScroll: 1,
-          centerMode: true, 
+          centerMode: true,
           centerPadding: '1px',
         },
       },
@@ -72,36 +101,62 @@ const Home = () => {
           </Button>
         </Box>
         <Slider {...settings}>
-          <Box p="0.5rem">
-            <Image
-              src="/black-dress.png"
-              alt="Black Dress"
-              borderRadius="lg"
-              boxSize="90%" 
-              objectFit="cover"
-              mb="1rem"
-            />
-          </Box>
-          <Box p="0.5rem">
-            <Image
-              src="/green-gold-dress.png"
-              alt="Green Gold Dress"
-              borderRadius="lg"
-              boxSize="90%" 
-              objectFit="cover"
-              mb="1rem"
-            />
-          </Box>
-          <Box p="0.5rem">
-            <Image
-              src="/vintage-dress.png"
-              alt="Vintage Dress"
-              borderRadius="lg"
-              boxSize="90%" 
-              objectFit="cover"
-              mb="1rem"
-            />
-          </Box>
+          {['black-dress.png', 'green-gold-dress.png', 'vintage-dress.png'].map((image, index) => (
+            <Box p="0.5rem" key={index}>
+              <animated.div
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transform: fashionSpringProps[index]?.transform || 'none',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  width: '100%', 
+                  maxWidth: '300px', 
+                  height: 'auto', 
+                  maxHeight: '400px', 
+                }}
+                onClick={() => handleFlip(index, 'fashion')}
+              >
+                <animated.div
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: 'lg',
+                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                  }}
+                >
+                  <Image
+                    src={`/${image}`}
+                    alt={`Fashion item ${index + 1}`}
+                    borderRadius="lg"
+                    objectFit="cover"
+                    width="100%"
+                    height="100%"
+                  />
+                </animated.div>
+                <animated.div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    backfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    backgroundColor: '#A66A8A',
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: 'lg',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    padding: '1rem', 
+                    boxSizing: 'border-box',
+                  }}
+                >
+                  <Text fontWeight="bold" fontSize="lg">Description of the item</Text>
+                </animated.div>
+              </animated.div>
+            </Box>
+          ))}
         </Slider>
       </Box>
       <Box
@@ -117,6 +172,7 @@ const Home = () => {
           height="auto"
         />
       </Box>
+
       <Box
         maxW="1280px"
         mx="auto"
@@ -134,36 +190,62 @@ const Home = () => {
             Comfort Food
           </Heading>
           <Slider {...settings}>
-            <Box p="0.5rem">
-              <Image
-                src="/coffee.png"
-                alt="Coffee"
-                borderRadius="lg"
-                boxSize="90%" 
-                objectFit="cover"
-                mb="1rem"
-              />
-            </Box>
-            <Box p="0.5rem">
-              <Image
-                src="/macarons.png"
-                alt="Macarons"
-                borderRadius="lg"
-                boxSize="90%" 
-                objectFit="cover"
-                mb="1rem"
-              />
-            </Box>
-            <Box p="0.5rem">
-              <Image
-                src="/sushi.png"
-                alt="Sushi"
-                borderRadius="lg"
-                boxSize="90%" 
-                objectFit="cover"
-                mb="1rem"
-              />
-            </Box>
+            {['coffee.png', 'macarons.png', 'sushi.png'].map((image, index) => (
+              <Box p="0.5rem" key={index}>
+                <animated.div
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform: foodSpringProps[index]?.transform || 'none',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    width: '100%', 
+                    maxWidth: '300px', 
+                    height: 'auto', 
+                    maxHeight: '400px',
+                  }}
+                  onClick={() => handleFlip(index, 'food')}
+                >
+                  <animated.div
+                    style={{
+                      backfaceVisibility: 'hidden',
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: 'lg',
+                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                    }}
+                  >
+                    <Image
+                      src={`/${image}`}
+                      alt={`Food item ${index + 1}`}
+                      borderRadius="lg"
+                      objectFit="cover"
+                      width="100%"
+                      height="100%"
+                    />
+                  </animated.div>
+                  <animated.div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      backfaceVisibility: 'hidden',
+                      transform: 'rotateY(180deg)',
+                      backgroundColor: '#CA85A0',
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: 'lg',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      color: 'white',
+                      padding: '1rem', 
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <Text fontWeight="bold" fontSize="lg">Delicious Food</Text>
+                  </animated.div>
+                </animated.div>
+              </Box>
+            ))}
           </Slider>
         </Box>
       </Box>
