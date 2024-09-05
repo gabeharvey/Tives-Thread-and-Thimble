@@ -4,6 +4,9 @@ import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apol
 import {setContext} from '@apollo/client/link/context';
 import Navbar from '/src/components/Navbar.jsx';
 import Footer from '/src/components/Footer.jsx';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 const httpLink = createHttpLink ({
     uri: '/graphql',
