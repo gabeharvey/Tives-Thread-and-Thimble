@@ -14,8 +14,8 @@ const createSpringProps = (flips, index) => {
 };
 
 const Home = () => {
-  const [fashionFlipped, setFashionFlipped] = useState([false, false, false]);
-  const [foodFlipped, setFoodFlipped] = useState([false, false, false]);
+  const [fashionFlipped, setFashionFlipped] = useState([false, false, false, false, false, false]);
+  const [foodFlipped, setFoodFlipped] = useState([false, false, false, false, false, false]);
 
   const handleFlip = (index, type) => {
     if (type === 'fashion') {
@@ -101,7 +101,7 @@ const Home = () => {
           </Button>
         </Box>
         <Slider {...settings}>
-          {['black-dress.png', 'green-gold-dress.png', 'vintage-dress.png', 'teal-dress.png', 'yellow-dress.png', 'flower-dress.png'].map((image, index) => (
+          {['black-dress.png', 'green-gold-dress.png', 'vintage-dress.png', 'teal-dress.png', 'hat-dress.png', 'flower-dress.png'].map((image, index) => (
             <Box p="0.5rem" key={index}>
               <animated.div
                 style={{
@@ -190,7 +190,7 @@ const Home = () => {
             Comfort Food
           </Heading>
           <Slider {...settings}>
-            {['coffee.png', 'macarons.png', 'sushi.png', 'croissant.png'].map((image, index) => (
+            {['coffee.png', 'macarons.png', 'sushi.png', 'pizza.png', 'matcha-cake.png', 'bread.png'].map((image, index) => (
               <Box p="0.5rem" key={index}>
                 <animated.div
                   style={{
