@@ -8,9 +8,12 @@ import {
     Link,
     IconButton,
     useDisclosure,
+    Divider,
+    Text,
   } from '@chakra-ui/react';
   import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
   import { Link as RouterLink } from 'react-router-dom';
+  import { motion } from 'framer-motion';
   
   const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,35 +31,36 @@ import {
           <Heading
             as={RouterLink}
             to="/"
-            fontSize="3xl"
+            fontSize="2xl"
             fontFamily="'Shadows Into Light', cursive"
             color="white"
             letterSpacing="wider"
           >
             Tive's (Tee-veh’s) Thread and Thimble
           </Heading>
-
+  
           <Spacer />
+  
           <IconButton
-  aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-  icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-  display={['block', 'block', 'none']}
-  onClick={isOpen ? onClose : onOpen}
-  variant="unstyled"
-  fontSize="30px" 
-  color="white"
-  fontWeight="bold"
-  mb='20px'
-  _hover={{ bg: 'none' }}
-  _focus={{ boxShadow: 'none' }}
-/>
-
+            aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            display={['block', 'block', 'none']}
+            onClick={isOpen ? onClose : onOpen}
+            variant="unstyled"
+            fontSize="30px"
+            color="white"
+            fontWeight="bold"
+            mb="20px"
+            _hover={{ bg: 'none' }}
+            _focus={{ boxShadow: 'none' }}
+          />
+  
           <Flex
             as="ul"
             display={['none', 'none', 'flex']}
             listStyleType="none"
             ml="auto"
-            alignItems="center"
+            alignItems="left"
             gap="2rem"
           >
             {['Home', 'About Us', 'Services', 'Contact'].map((item) => (
@@ -90,32 +94,62 @@ import {
             ))}
           </Flex>
           {isOpen && (
-            <Box
-              position="fixed"
-              top="0"
-              left="0"
-              width="100%"
-              height="100vh"
-              bg="rgba(0, 128, 128, 0.9)"
-              zIndex="overlay"
-              p="3rem"
-              display={['block', 'block', 'none']}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
             >
-              <Flex direction="column" gap="2rem" color="white" alignItems="center">
-                {['Home', 'About Us', 'Services', 'Contact'].map((item) => (
-                  <Button
-                    key={item}
-                    as={RouterLink}
-                    to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
-                    variant="link"
-                    fontSize="2xl"
+              <Box
+                position="fixed"
+                top="0"
+                right="0"
+                width="75%" 
+                height="100vh"
+                bg="#E0B0FF" 
+                zIndex="overlay"
+                display="block"
+                color="white"
+                mt="15px"
+              >
+                <Flex justifyContent="space-between" alignItems="center" mb="1rem">
+                  <Text fontSize="2xl" fontWeight="bold" color="white" padding='1rem'>
+                    Menu
+                  </Text>
+                  <IconButton
+                    aria-label="Close Menu"
+                    icon={<CloseIcon />}
                     onClick={onClose}
-                  >
-                    {item}
-                  </Button>
-                ))}
-              </Flex>
-            </Box>
+                    variant="unstyled"
+                    fontSize="20px"
+                    color="white"
+                    _hover={{ bg: 'none' }}
+                    _focus={{ boxShadow: 'none' }}
+                  />
+                </Flex>
+                <Divider 
+                    borderColor="white" 
+                    borderWidth="2px" 
+                    borderStyle="solid"
+                />
+                <Flex direction="column" gap="2rem" color="white" alignItems="left" mt="2rem">
+                  {['Home', 'About Us', 'Services', 'Contact'].map((item) => (
+                    <Button
+                      key={item}
+                      as={RouterLink}
+                      to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                      variant="link"
+                      fontSize="xl"
+                      onClick={onClose}
+                      color="white"
+                      _hover={{ textDecoration: 'none' }}
+                    >
+                      {item}
+                    </Button>
+                  ))}
+                </Flex>
+              </Box>
+            </motion.div>
           )}
         </Flex>
       </Box>
@@ -123,3 +157,4 @@ import {
   };
   
   export default Navbar;
+  
