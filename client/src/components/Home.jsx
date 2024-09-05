@@ -9,7 +9,7 @@ const Home = () => {
       px="2rem"
       py="4rem"
       textAlign="center"
-      bg="gray.50"
+      bg="white"
     >
       {/* Hero Section */}
       <Box mb="5rem">
@@ -20,25 +20,22 @@ const Home = () => {
           Tailored Fashion. Handcrafted Excellence.
         </Text>
         <Button
-  bg="#E0B0FF" // Mauve color
-  color="white"
-  size="lg"
-  borderRadius="full" // Full rounded corners
-  _hover={{
-    bg: "#C2A8B2", // Slightly darker mauve for hover effect
-    boxShadow: "md", // Add shadow on hover
-  }}
-  _active={{
-    bg: "#B399A3", // Even darker mauve for active state
-  }}
-  boxShadow="lg" // Initial shadow
->
-  Explore Our Collection
-</Button>
-
+            bg="#E0B0FF"
+            color="white"
+            size="lg"
+            borderRadius="full"
+        _hover={{
+            bg: "#C2A8B2",
+            boxShadow: "md",
+            }}
+        _active={{
+            bg: "#B399A3",
+            }}
+            boxShadow="lg" 
+        >
+            Explore Our Collection
+        </Button>
       </Box>
-
-      {/* Feature Section */}
       <Stack direction={["column", "row"]} spacing="2rem" justify="center">
         <Box>
           <Image
