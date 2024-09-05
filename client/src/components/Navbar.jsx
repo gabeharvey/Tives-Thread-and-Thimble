@@ -36,7 +36,7 @@ import {
             color="white"
             letterSpacing="wider"
           >
-            Tive's Thread and Thimble
+            Tive's Thread & Thimble
           </Heading>
   
           <Spacer />
