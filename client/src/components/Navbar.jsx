@@ -22,7 +22,7 @@ import {
         px="2rem"
         position="relative"
         boxShadow="lg"
-        mb="20px" 
+        mb="20px"
       >
         <Flex alignItems="center" justifyContent="space-between">
           <Heading
@@ -33,20 +33,24 @@ import {
             color="white"
             letterSpacing="wider"
           >
-            Tive's (Tee-veh’s) Thread and Thimble 
+            Tive's (Tee-veh’s) Thread and Thimble
           </Heading>
-  
+
           <Spacer />
           <IconButton
-            aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            display={['block', 'block', 'none']}
-            onClick={isOpen ? onClose : onOpen}
-            variant="outline"
-            size="md"
-            color="white"
-            borderColor="white"
-          />
+  aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
+  icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+  display={['block', 'block', 'none']}
+  onClick={isOpen ? onClose : onOpen}
+  variant="unstyled"
+  fontSize="30px" 
+  color="white"
+  fontWeight="bold"
+  mb='20px'
+  _hover={{ bg: 'none' }}
+  _focus={{ boxShadow: 'none' }}
+/>
+
           <Flex
             as="ul"
             display={['none', 'none', 'flex']}
@@ -119,4 +123,3 @@ import {
   };
   
   export default Navbar;
-  
