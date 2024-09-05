@@ -139,7 +139,7 @@ const Home = () => {
                 src="/coffee.png"
                 alt="Coffee"
                 borderRadius="lg"
-                boxSize="90%" // Increased size
+                boxSize="90%" 
                 objectFit="cover"
                 mb="1rem"
               />
@@ -149,7 +149,7 @@ const Home = () => {
                 src="/macarons.png"
                 alt="Macarons"
                 borderRadius="lg"
-                boxSize="90%" // Increased size
+                boxSize="90%" 
                 objectFit="cover"
                 mb="1rem"
               />
@@ -159,13 +159,27 @@ const Home = () => {
                 src="/sushi.png"
                 alt="Sushi"
                 borderRadius="lg"
-                boxSize="90%" // Increased size
+                boxSize="90%" 
                 objectFit="cover"
                 mb="1rem"
               />
             </Box>
           </Slider>
         </Box>
+      </Box>
+      <Box
+        maxW="1280px"
+        mx="auto"
+        px="2rem"
+        py="6rem"
+        textAlign="center"
+        bg="#F6CBD4"
+        backgroundImage="url('/flowers.png')"
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+        backgroundSize="cover"
+      >
+
       </Box>
     </>
   );

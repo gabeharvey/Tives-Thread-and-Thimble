@@ -6,7 +6,7 @@ const Footer = () => {
   const display = useBreakpointValue({ base: 'block', md: 'flex' });
 
   return (
-    <Box as="footer" bg="#CA85A0" py="2rem" px="2rem" boxShadow="md" textAlign="center">
+    <Box as="footer" className="footer-background" bg="#CA85A0" py="2rem" px="2rem" boxShadow="md" textAlign="center">
       <Flex
         direction={['column', 'row']}
         justify="center"
