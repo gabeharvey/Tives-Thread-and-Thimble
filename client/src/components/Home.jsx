@@ -48,14 +48,14 @@ const Home = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="2xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#E0B0FF" fontWeight="900">
+          <Heading as="h1" size="2xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#A66A8A" fontWeight="900">
             Welcome to Tive's Thread and Thimble
           </Heading>
-          <Text fontSize="xl" mb="2rem" color="#A8D5BA" fontWeight="bold">
+          <Text fontSize="xl" mb="2rem" color="#A66A8A" fontWeight="bold">
             Tailored Fashion. Handcrafted Excellence.
           </Text>
           <Button
-            bg="#E0B0FF"
+            bg="#CA85A0"
             color="white"
             size="lg"
             borderRadius="md"
@@ -130,7 +130,7 @@ const Home = () => {
         backgroundSize="cover"
       >
         <Box mb="5rem">
-          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#E0B0FF" fontWeight="900">
+          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#CA85A0" fontWeight="900">
             Comfort Food
           </Heading>
           <Slider {...settings}>
