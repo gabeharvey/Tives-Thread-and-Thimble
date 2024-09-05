@@ -4,24 +4,29 @@ import Slider from "react-slick";
 
 const Home = () => {
   const settings = {
-    dots: true,
+    dots: false, 
+    arrows: false, 
     infinite: true,
     speed: 500,
-    slidesToShow: 3, 
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2, 
+          slidesToScroll: 1,
+          centerMode: true, 
+          centerPadding: '1px',
         },
       },
     ],
@@ -36,7 +41,7 @@ const Home = () => {
         py="4rem"
         textAlign="center"
         bg="white"
-        backgroundImage="url('/fashion-girl.png')" 
+        backgroundImage="url('/fashion-girl.png')"
         backgroundPosition="center top"
         backgroundRepeat="no-repeat"
         backgroundSize="contain"
@@ -53,7 +58,7 @@ const Home = () => {
             bg="#E0B0FF"
             color="white"
             size="lg"
-            borderRadius="full"
+            borderRadius="md"
             _hover={{
               bg: "#C2A8B2",
               boxShadow: "md",
@@ -61,38 +66,38 @@ const Home = () => {
             _active={{
               bg: "#B399A3",
             }}
-            boxShadow="lg" 
+            boxShadow="lg"
           >
             Explore Our Collection
           </Button>
         </Box>
         <Slider {...settings}>
-          <Box p="1rem">
+          <Box p="0.5rem">
             <Image
               src="/black-dress.png"
               alt="Black Dress"
               borderRadius="lg"
-              boxSize="100%" 
-              objectFit="cover" 
-              mb="1rem"
-            />
-          </Box>
-          <Box p="1rem">
-            <Image
-              src="/green-gold-dress.png"
-              alt="Green Gold Dress"
-              borderRadius="lg"
-              boxSize="100%"
+              boxSize="90%" 
               objectFit="cover"
               mb="1rem"
             />
           </Box>
-          <Box p="1rem">
+          <Box p="0.5rem">
+            <Image
+              src="/green-gold-dress.png"
+              alt="Green Gold Dress"
+              borderRadius="lg"
+              boxSize="90%" 
+              objectFit="cover"
+              mb="1rem"
+            />
+          </Box>
+          <Box p="0.5rem">
             <Image
               src="/vintage-dress.png"
               alt="Vintage Dress"
               borderRadius="lg"
-              boxSize="100%"
+              boxSize="90%" 
               objectFit="cover"
               mb="1rem"
             />
@@ -106,10 +111,10 @@ const Home = () => {
         mx="auto"
       >
         <Image
-          src="/horizontal-zipper.png" 
+          src="/horizontal-zipper.png"
           alt="Separator"
-          width="100%" 
-          height="auto" 
+          width="100%"
+          height="auto"
         />
       </Box>
       <Box
@@ -119,7 +124,7 @@ const Home = () => {
         py="6rem"
         textAlign="center"
         bg="white"
-        backgroundImage="url('/peonies.png')" 
+        backgroundImage="url('/peonies.png')"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
@@ -129,37 +134,37 @@ const Home = () => {
             Comfort Food
           </Heading>
           <Slider {...settings}>
-          <Box p="1rem">
-            <Image
-              src="/coffee.png"
-              alt="Coffee"
-              borderRadius="lg"
-              boxSize="100%" 
-              objectFit="cover" 
-              mb="1rem"
-            />
-          </Box>
-          <Box p="1rem">
-            <Image
-              src="/macarons.png"
-              alt="Macarons"
-              borderRadius="lg"
-              boxSize="100%"
-              objectFit="cover"
-              mb="1rem"
-            />
-          </Box>
-          <Box p="1rem">
-            <Image
-              src="/sushi.png"
-              alt="Sushi"
-              borderRadius="lg"
-              boxSize="100%"
-              objectFit="cover"
-              mb="1rem"
-            />
-          </Box>
-        </Slider>
+            <Box p="0.5rem">
+              <Image
+                src="/coffee.png"
+                alt="Coffee"
+                borderRadius="lg"
+                boxSize="90%" // Increased size
+                objectFit="cover"
+                mb="1rem"
+              />
+            </Box>
+            <Box p="0.5rem">
+              <Image
+                src="/macarons.png"
+                alt="Macarons"
+                borderRadius="lg"
+                boxSize="90%" // Increased size
+                objectFit="cover"
+                mb="1rem"
+              />
+            </Box>
+            <Box p="0.5rem">
+              <Image
+                src="/sushi.png"
+                alt="Sushi"
+                borderRadius="lg"
+                boxSize="90%" // Increased size
+                objectFit="cover"
+                mb="1rem"
+              />
+            </Box>
+          </Slider>
         </Box>
       </Box>
     </>
