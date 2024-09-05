@@ -19,9 +19,23 @@ const Home = () => {
         <Text fontSize="xl" mb="2rem" color="gray.600">
           Tailored Fashion. Handcrafted Excellence.
         </Text>
-        <Button colorScheme="teal" size="lg" rounded="full">
-          Explore Our Collection
-        </Button>
+        <Button
+  bg="#E0B0FF" // Mauve color
+  color="white"
+  size="lg"
+  borderRadius="full" // Full rounded corners
+  _hover={{
+    bg: "#C2A8B2", // Slightly darker mauve for hover effect
+    boxShadow: "md", // Add shadow on hover
+  }}
+  _active={{
+    bg: "#B399A3", // Even darker mauve for active state
+  }}
+  boxShadow="lg" // Initial shadow
+>
+  Explore Our Collection
+</Button>
+
       </Box>
 
       {/* Feature Section */}
