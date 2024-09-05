@@ -7,10 +7,24 @@ const Home = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3, 
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -52,48 +66,36 @@ const Home = () => {
             Explore Our Collection
           </Button>
         </Box>
-        
         <Slider {...settings}>
-          <Box>
+          <Box p="1rem">
             <Image
-              src="https://via.placeholder.com/300"
-              alt="Custom Tailoring"
+              src="/black-dress.png"
+              alt="Black Dress"
               borderRadius="lg"
+              boxSize="100%" 
+              objectFit="cover" 
               mb="1rem"
-              opacity="0.4" 
             />
-            <Heading size="lg" color="#A8D5BA">Custom Tailoring</Heading>
-            <Text color="#A8D5BA" mt="0.5rem">
-              Experience the perfect fit with our bespoke tailoring services.
-            </Text>
           </Box>
-
-          <Box>
+          <Box p="1rem">
             <Image
-              src="https://via.placeholder.com/300"
-              alt="Handcrafted Designs"
+              src="/green-gold-dress.png"
+              alt="Green Gold Dress"
               borderRadius="lg"
+              boxSize="100%"
+              objectFit="cover"
               mb="1rem"
-              opacity="0.4" 
             />
-            <Heading size="lg" color="#A8D5BA">Handcrafted Designs</Heading>
-            <Text color="#A8D5BA" mt="0.5rem">
-              Our designs blend tradition with modern trends, crafted to perfection.
-            </Text>
           </Box>
-
-          <Box>
+          <Box p="1rem">
             <Image
-              src="https://via.placeholder.com/300"
-              alt="Sustainable Fashion"
+              src="/vintage-dress.png"
+              alt="Vintage Dress"
               borderRadius="lg"
+              boxSize="100%"
+              objectFit="cover"
               mb="1rem"
-              opacity="0.4" 
             />
-            <Heading size="lg" color="#A8D5BA">Sustainable Fashion</Heading>
-            <Text color="#A8D5BA" mt="0.5rem">
-              Fashion that cares for the environment, without compromising style.
-            </Text>
           </Box>
         </Slider>
       </Box>
@@ -124,12 +126,40 @@ const Home = () => {
       >
         <Box mb="5rem">
           <Heading as="h2" size="xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#E0B0FF" fontWeight="900">
-            New Section Title
+            Comfort Food
           </Heading>
-          <Text fontSize="xl" mb="2rem" color="#A8D5BA" fontWeight="bold">
-            New Section Description.
-          </Text>
-          {/* Add any content or additional carousel here */}
+          <Slider {...settings}>
+          <Box p="1rem">
+            <Image
+              src="/coffee.png"
+              alt="Coffee"
+              borderRadius="lg"
+              boxSize="100%" 
+              objectFit="cover" 
+              mb="1rem"
+            />
+          </Box>
+          <Box p="1rem">
+            <Image
+              src="/macarons.png"
+              alt="Macarons"
+              borderRadius="lg"
+              boxSize="100%"
+              objectFit="cover"
+              mb="1rem"
+            />
+          </Box>
+          <Box p="1rem">
+            <Image
+              src="/sushi.png"
+              alt="Sushi"
+              borderRadius="lg"
+              boxSize="100%"
+              objectFit="cover"
+              mb="1rem"
+            />
+          </Box>
+        </Slider>
         </Box>
       </Box>
     </>
