@@ -40,7 +40,7 @@ const Home = () => {
         px="2rem"
         py="4rem"
         textAlign="center"
-        bg="white"
+        bg="#F6CBD4"
         backgroundImage="url('/fashion-girl.png')"
         backgroundPosition="center top"
         backgroundRepeat="no-repeat"
@@ -106,9 +106,9 @@ const Home = () => {
       </Box>
       <Box
         textAlign="center"
-        my="2rem"
         maxW="1280px"
         mx="auto"
+        bg="#F6CBD4"
       >
         <Image
           src="/horizontal-zipper.png"
