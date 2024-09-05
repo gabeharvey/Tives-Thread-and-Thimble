@@ -48,8 +48,8 @@ const Home = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="2xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#A66A8A" fontWeight="900">
-            Welcome to Tive's Thread and Thimble
+          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#A66A8A" fontWeight="900">
+            Welcome to Tive's (Tee-veh’s) Thread and Thimble
           </Heading>
           <Text fontSize="xl" mb="2rem" color="#A66A8A" fontWeight="bold">
             Tailored Fashion. Handcrafted Excellence.
