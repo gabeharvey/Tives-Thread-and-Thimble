@@ -112,7 +112,7 @@ const Home = () => {
       >
         <Image
           src="/horizontal-zipper.png"
-          alt="Separator"
+          alt="Zipper"
           width="100%"
           height="auto"
         />
@@ -168,6 +168,19 @@ const Home = () => {
         </Box>
       </Box>
       <Box
+        textAlign="center"
+        maxW="1280px"
+        mx="auto"
+        bg="#F6CBD4"
+      >
+        <Image
+          src="/red-rope.png"
+          alt="Red Rope"
+          width="100%"
+          height="auto"
+        />
+      </Box>
+      <Box
         maxW="1280px"
         mx="auto"
         px="2rem"
@@ -178,6 +191,7 @@ const Home = () => {
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
+        minHeight="100vh"
       >
 
       </Box>
