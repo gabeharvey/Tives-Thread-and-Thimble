@@ -106,7 +106,7 @@ import {
                 right="0"
                 width="75%" 
                 height="100vh"
-                bg="#E0B0FF" 
+                bg="#CA85A0" 
                 zIndex="overlay"
                 display="block"
                 color="white"
