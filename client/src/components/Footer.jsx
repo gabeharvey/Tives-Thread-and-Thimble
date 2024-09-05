@@ -6,7 +6,7 @@ const Footer = () => {
   const display = useBreakpointValue({ base: 'block', md: 'flex' });
 
   return (
-    <Box as="footer" bg="gray.100" py="2rem" px="2rem" boxShadow="md" textAlign="center">
+    <Box as="footer" bg="#A8D5BA" py="2rem" px="2rem" boxShadow="md" textAlign="center">
       <Flex
         direction={['column', 'row']}
         justify="center"
@@ -14,6 +14,8 @@ const Footer = () => {
         mb="1rem"
         gap="1rem"
         display={display}
+        color="white"
+        fontWeight="bold"
       >
         <Link as={RouterLink} to="/" fontSize="lg" _hover={{ textDecoration: 'underline' }}>
           Home
@@ -29,7 +31,7 @@ const Footer = () => {
         </Link>
       </Flex>
 
-      <Text fontSize="sm" color="gray.600">
+      <Text fontSize="md" color="white">
         &copy; {new Date().getFullYear()} Tive's Thread and Thimble. All rights reserved.
       </Text>
     </Box>

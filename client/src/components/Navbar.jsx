@@ -28,12 +28,12 @@ import {
           <Heading
             as={RouterLink}
             to="/"
-            fontSize="2xl"
+            fontSize="3xl"
             fontFamily="'Shadows Into Light', cursive"
             color="white"
             letterSpacing="wider"
           >
-            Tive's Thread and Thimble (Tee-veh’s)
+            Tive's (Tee-veh’s) Thread and Thimble 
           </Heading>
   
           <Spacer />
