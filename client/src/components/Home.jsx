@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Heading, Text, Button, Image } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useSpring, animated } from '@react-spring/web';
+import quotes from '../utils/quotes.json';
 
 const createSpringProps = (flips, index) => {
   return flips.map(flip =>
@@ -60,6 +61,14 @@ const Home = () => {
       },
     ],
   };
+  const [randomQuote, setRandomQuote] = useState('');
+  useEffect(() => {
+    const getRandomQuote = () => {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      return quotes[randomIndex];
+    };
+    setRandomQuote(getRandomQuote());
+  }, []);
 
   return (
     <>
@@ -275,7 +284,9 @@ const Home = () => {
         backgroundSize="cover"
         minHeight="100vh"
       >
-
+                <Text fontSize='40px' fontFamily="'Shadows Into Light', cursive" fontWeight='bold' color='#CA85A0' maxW="90%" mb="6" mt="10">
+                    {randomQuote.quote}
+                </Text>
       </Box>
     </>
   );
