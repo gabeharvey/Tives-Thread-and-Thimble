@@ -11,9 +11,10 @@ import {
     Divider,
     Text,
   } from '@chakra-ui/react';
-  import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+  import { CloseIcon } from '@chakra-ui/icons';
   import { Link as RouterLink } from 'react-router-dom';
   import { motion } from 'framer-motion';
+  import { CgMenuGridO } from 'react-icons/cg';
   
   const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,13 +27,14 @@ import {
         position="relative"
         boxShadow="lg"
         mb="20px"
+        fontFamily="'Sevillana', cursive"
       >
         <Flex alignItems="center" justifyContent="space-between">
           <Heading
             as={RouterLink}
             to="/"
             fontSize="3xl"
-            fontFamily="'Shadows Into Light', cursive"
+            fontFamily="'Shadows Into Light Two', cursive"
             color="beige"
             letterSpacing="wider"
           >
@@ -43,16 +45,16 @@ import {
   
           <IconButton
             aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            icon={isOpen ? <CloseIcon /> : <CgMenuGridO />}
             display={['block', 'block', 'none']}
             onClick={isOpen ? onClose : onOpen}
             variant="unstyled"
             fontSize="30px"
             color="beige"
-            fontWeight="bold"
-            mb="20px"
             _hover={{ bg: 'none' }}
             _focus={{ boxShadow: 'none' }}
+            mt="20px"
+            mb="20px"
           />
   
           <Flex
@@ -93,6 +95,7 @@ import {
               </Link>
             ))}
           </Flex>
+  
           {isOpen && (
             <motion.div
               initial={{ x: '100%' }}
@@ -104,16 +107,30 @@ import {
                 position="fixed"
                 top="0"
                 right="0"
-                width="75%" 
+                width="75%"
                 height="100vh"
-                bg="#CA85A0" 
+                bg="#F6CBD4"
                 zIndex="overlay"
                 display="block"
-                color="beige"
-                mt="15px"
+                color="#A66A8A"
+                transition="opacity 0.5s ease"
+                border="5px solid"
+                borderColor="transparent"
+                borderImage="linear-gradient(to right, #F6CBD4, #A66A8A)"
+                borderImageSlice="1"
+                borderTopLeftRadius="30px"  
+                borderBottomLeftRadius="30px" 
+                boxShadow="0 0 15px rgba(166, 106, 138, 0.4)"
               >
                 <Flex justifyContent="space-between" alignItems="center" mb="1rem">
-                  <Text fontSize="2xl" fontWeight="bold" color="beige" padding='1rem'>
+                  <Text
+                    fontSize="2xl"
+                    fontWeight="bold"
+                    color="#A66A8A"
+                    padding="1rem"
+                    fontFamily="'Sevillana', cursive"
+                    mt="20px"
+                  >
                     Menu
                   </Text>
                   <IconButton
@@ -121,18 +138,16 @@ import {
                     icon={<CloseIcon />}
                     onClick={onClose}
                     variant="unstyled"
-                    fontSize="20px"
-                    color="beige"
+                    fontSize="24px"
+                    color="#A66A8A"
+                    padding="10px"
+                    mr="20px"
                     _hover={{ bg: 'none' }}
                     _focus={{ boxShadow: 'none' }}
                   />
                 </Flex>
-                <Divider 
-                    borderColor="beige" 
-                    borderWidth="2px" 
-                    borderStyle="solid"
-                />
-                <Flex direction="column" gap="2rem" color="beige" alignItems="left" mt="2rem">
+                <Divider borderColor="#A66A8A" borderWidth="2px" borderStyle="solid" />
+                <Flex direction="column" gap="2rem" color="#A66A8A" alignItems="flex-start" mt="2rem" ml="2rem">
                   {['Home', 'About Us', 'Services', 'Contact'].map((item) => (
                     <Button
                       key={item}
@@ -140,8 +155,9 @@ import {
                       to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
                       variant="link"
                       fontSize="xl"
+                      fontFamily="'Sevillana', cursive"
                       onClick={onClose}
-                      color="beige"
+                      color="#A66A8A"
                       _hover={{ textDecoration: 'none' }}
                     >
                       {item}

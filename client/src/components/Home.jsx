@@ -86,10 +86,10 @@ const Home = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#A66A8A" fontWeight="900">
+          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="#A66A8A" fontWeight="900">
             Welcome to Tive's (Tee-veh’s) Thread & Thimble
           </Heading>
-          <Text fontSize="xl" mb="2rem" color="#A66A8A" fontWeight="bold">
+          <Text fontSize="2xl" mb="2rem" color="#A66A8A" fontWeight="bold" fontFamily="'Sevillana', cursive">
             Tailored Fashion. Handcrafted Excellence.
           </Text>
           <Button
@@ -105,6 +105,7 @@ const Home = () => {
               bg: "#B399A3",
             }}
             boxShadow="lg"
+            fontFamily="'Sevillana', cursive"
           >
             Explore Our Collection
           </Button>
@@ -204,7 +205,7 @@ const Home = () => {
         backgroundSize="cover"
       >
         <Box mb="5rem">
-          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Shadows Into Light', cursive" color="#CA85A0" fontWeight="900">
+          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Sevillana', cursive" color="#CA85A0" fontWeight="900">
             Comfort Food
           </Heading>
           <Slider {...settings}>
@@ -343,7 +344,7 @@ const Home = () => {
       fontSize={{ base: '22px', md: '30px' }}
       fontFamily="'Sevillana', cursive"
       fontWeight='bold'
-      color='red'
+      color='#CA85A0'
       textAlign="center"
       m="auto"
       overflow="hidden"
