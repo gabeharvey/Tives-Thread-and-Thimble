@@ -303,11 +303,36 @@ const Home = () => {
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
         minHeight="100vh"
-      >
-                <Text fontSize='40px' fontFamily="'Shadows Into Light', cursive" fontWeight='bold' color='#CA85A0' maxW="90%" mb="6" mt="10">
-                    {randomQuote.quote}
-                </Text>
-      </Box>
+        display="flex"  
+        alignItems="center" 
+        justifyContent="center" 
+        flexDirection="column"
+        gap="4"
+>
+  <Box
+    bgImage="url('/green-fabric.png')" 
+    bgPosition="center"
+    bgRepeat="no-repeat"
+    bgSize="cover" 
+    borderRadius="md" 
+    p="4rem" 
+    maxW="80%" 
+    maxH="50%" 
+    textAlign="center"
+    boxShadow="lg" 
+  >
+    <Text
+      fontSize='20px'
+      fontFamily="'Sevillana', cursive"
+      fontWeight='bold'
+      color='beige'
+      mb="6"
+    >
+      {randomQuote.quote}
+    </Text>
+  </Box>
+</Box>
+
     </>
   );
 };
