@@ -14,24 +14,24 @@ const Footer = () => {
         mb="1rem"
         gap="1rem"
         display={display}
-        color="white"
+        color="beige"
         fontWeight="bold"
       >
-        <Link as={RouterLink} to="/" fontSize="lg" _hover={{ textDecoration: 'underline' }}>
+        <Link as={RouterLink} to="/" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           Home
         </Link>
-        <Link as={RouterLink} to="/about" fontSize="lg" _hover={{ textDecoration: 'underline' }}>
+        <Link as={RouterLink} to="/about" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           About Us
         </Link>
-        <Link as={RouterLink} to="/services" fontSize="lg" _hover={{ textDecoration: 'underline' }}>
+        <Link as={RouterLink} to="/services" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           Services
         </Link>
-        <Link as={RouterLink} to="/contact" fontSize="lg" _hover={{ textDecoration: 'underline' }}>
+        <Link as={RouterLink} to="/contact" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           Contact
         </Link>
       </Flex>
 
-      <Text fontSize="md" color="white">
+      <Text fontSize="md" color="beige">
         &copy; {new Date().getFullYear()} Tive's Thread and Thimble. All rights reserved.
       </Text>
     </Box>

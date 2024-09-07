@@ -33,7 +33,7 @@ import {
             to="/"
             fontSize="3xl"
             fontFamily="'Shadows Into Light', cursive"
-            color="white"
+            color="beige"
             letterSpacing="wider"
           >
             Tive's Thread & Thimble
@@ -48,7 +48,7 @@ import {
             onClick={isOpen ? onClose : onOpen}
             variant="unstyled"
             fontSize="30px"
-            color="white"
+            color="beige"
             fontWeight="bold"
             mb="20px"
             _hover={{ bg: 'none' }}
@@ -69,7 +69,7 @@ import {
                 as={RouterLink}
                 to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
                 fontSize="md"
-                color="white"
+                color="beige"
                 fontWeight="bold"
                 position="relative"
                 _hover={{
@@ -85,7 +85,7 @@ import {
                   left: 0,
                   width: 0,
                   height: '2px',
-                  bg: 'white',
+                  bg: 'beige',
                   transition: 'width 0.3s ease',
                 }}
               >
@@ -109,11 +109,11 @@ import {
                 bg="#CA85A0" 
                 zIndex="overlay"
                 display="block"
-                color="white"
+                color="beige"
                 mt="15px"
               >
                 <Flex justifyContent="space-between" alignItems="center" mb="1rem">
-                  <Text fontSize="2xl" fontWeight="bold" color="white" padding='1rem'>
+                  <Text fontSize="2xl" fontWeight="bold" color="beige" padding='1rem'>
                     Menu
                   </Text>
                   <IconButton
@@ -122,17 +122,17 @@ import {
                     onClick={onClose}
                     variant="unstyled"
                     fontSize="20px"
-                    color="white"
+                    color="beige"
                     _hover={{ bg: 'none' }}
                     _focus={{ boxShadow: 'none' }}
                   />
                 </Flex>
                 <Divider 
-                    borderColor="white" 
+                    borderColor="beige" 
                     borderWidth="2px" 
                     borderStyle="solid"
                 />
-                <Flex direction="column" gap="2rem" color="white" alignItems="left" mt="2rem">
+                <Flex direction="column" gap="2rem" color="beige" alignItems="left" mt="2rem">
                   {['Home', 'About Us', 'Services', 'Contact'].map((item) => (
                     <Button
                       key={item}
@@ -141,7 +141,7 @@ import {
                       variant="link"
                       fontSize="xl"
                       onClick={onClose}
-                      color="white"
+                      color="beige"
                       _hover={{ textDecoration: 'none' }}
                     >
                       {item}

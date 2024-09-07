@@ -94,7 +94,7 @@ const Home = () => {
           </Text>
           <Button
             bg="#CA85A0"
-            color="white"
+            color="beige"
             size="lg"
             borderRadius="md"
             _hover={{
@@ -155,7 +155,7 @@ const Home = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          color: 'white',
+          color: 'beige',
           padding: '1rem',
           backgroundColor: 'transparent',  
           boxSizing: 'border-box',
@@ -197,7 +197,7 @@ const Home = () => {
         px="2rem"
         py="6rem"
         textAlign="center"
-        bg="white"
+        bg="beige"
         backgroundImage="url('/peonies.png')"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
@@ -292,48 +292,92 @@ const Home = () => {
         />
       </Box>
       <Box
-        maxW="1280px"
-        mx="auto"
-        px="2rem"
-        py="6rem"
-        textAlign="center"
-        bg="#F6CBD4"
-        backgroundImage="url('/flowers.png')"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-        backgroundSize="cover"
-        minHeight="100vh"
-        display="flex"  
-        alignItems="center" 
-        justifyContent="center" 
-        flexDirection="column"
-        gap="4"
+  maxW="1280px"
+  mx="auto"
+  px="2rem"
+  py="6rem"
+  textAlign="center"
+  bg="#F6CBD4"
+  backgroundImage="url('/flowers.png')"
+  backgroundPosition="center"
+  backgroundRepeat="no-repeat"
+  backgroundSize="cover"
+  minHeight="100vh"
+  display="flex"
+  flexDirection="column" 
+  alignItems="center" 
+  justifyContent="center" 
+  gap="4"
 >
   <Box
-    bgImage="url('/green-fabric.png')" 
+    bgImage="url('/antique-sewing.png')" 
+    bgPosition="center"
+    bgRepeat="no-repeat"
+    bgSize="contain" 
+    borderRadius="md" 
+    width="80vw" 
+    height="300px" 
+    display="flex" 
+    alignItems="center" 
+    justifyContent="center" 
+    textAlign="center"
+    overflow="hidden" 
+    boxShadow="none" 
+  >
+    <Image
+      src="/antique-sewing.png" 
+      alt="Antique Sewing"
+      borderRadius="md" 
+      objectFit="contain"
+      width="100%"
+      height="100%"
+    />
+  </Box>
+  <Box
     bgPosition="center"
     bgRepeat="no-repeat"
     bgSize="cover" 
-    borderRadius="md" 
-    p="4rem" 
-    maxW="80%" 
-    maxH="50%" 
+    borderRadius="15px" 
+    width="80vw" 
+    height="300px" 
+    display="flex" 
+    alignItems="center" 
+    justifyContent="center" 
     textAlign="center"
-    boxShadow="lg" 
+    overflow="hidden" 
+    boxShadow="none" 
   >
     <Text
-      fontSize='20px'
-      fontFamily="'Sevillana', cursive"
+      fontSize={{ base: '22px', md: '30px' }}
+      fontFamily="'Shadows Into Light Two', cursive"
       fontWeight='bold'
-      color='beige'
-      mb="6"
+      color='#A66A8A'
+      textAlign="center"
+      m="auto"
+      overflow="hidden"
+      textOverflow="ellipsis"
     >
       {randomQuote.quote}
     </Text>
   </Box>
+  <Box
+    bgImage="url('/texas-flag.png')" 
+    bgPosition="center"
+    bgRepeat="no-repeat"
+    bgSize="contain" 
+    borderRadius="15px" 
+    width="80vw" 
+    height="300px" 
+    display="flex" 
+    alignItems="center" 
+    justifyContent="center" 
+    textAlign="center"
+    overflow="hidden" 
+    boxShadow="none" 
+  >
+  </Box>
 </Box>
-
-    </>
+  </>
   );
 };
 
