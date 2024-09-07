@@ -351,7 +351,7 @@ const Home = () => {
       fontSize={{ base: '22px', md: '30px' }}
       fontFamily="'Shadows Into Light Two', cursive"
       fontWeight='bold'
-      color='#A66A8A'
+      color='red'
       textAlign="center"
       m="auto"
       overflow="hidden"
