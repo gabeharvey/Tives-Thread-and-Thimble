@@ -110,62 +110,71 @@ const Home = () => {
           </Button>
         </Box>
         <Slider {...settings}>
-          {['black-dress.png', 'green-gold-dress.png', 'vintage-dress.png', 'teal-dress.png', 'hat-dress.png', 'flower-dress.png'].map((image, index) => (
-            <Box p="0.5rem" key={index}>
-              <animated.div
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: fashionSpringProps[index]?.transform || 'none',
-                  cursor: 'pointer',
-                  position: 'relative',
-                  width: '100%', 
-                  maxWidth: '300px', 
-                  height: 'auto', 
-                  maxHeight: '400px', 
-                }}
-                onClick={() => handleFlip(index, 'fashion')}
-              >
-                <animated.div
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: 'lg',
-                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-                  }}
-                >
-                  <Image
-                    src={`/${image}`}
-                    alt={`Fashion item ${index + 1}`}
-                    borderRadius="lg"
-                    objectFit="cover"
-                    width="100%"
-                    height="100%"
-                  />
-                </animated.div>
-                <animated.div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    backfaceVisibility: 'hidden',
-                    transform: 'rotateY(180deg)',
-                    backgroundColor: '#A66A8A',
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: 'lg',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: 'white',
-                    padding: '1rem', 
-                    boxSizing: 'border-box',
-                  }}
-                >
-                  <Text fontWeight="bold" fontSize="lg">Description of the item</Text>
-                </animated.div>
-              </animated.div>
-            </Box>
-          ))}
+        {['black-dress.png', 'green-gold-dress.png', 'vintage-dress.png', 'teal-dress.png', 'hat-dress.png', 'flower-dress.png'].map((image, index) => (
+  <Box p="0.5rem" key={index} width="100%" maxWidth="300px">
+    <animated.div
+      style={{
+        transformStyle: 'preserve-3d',
+        transform: fashionSpringProps[index]?.transform || 'none',
+        cursor: 'pointer',
+        position: 'relative',
+        width: '100%',
+        height: '400px', 
+      }}
+      onClick={() => handleFlip(index, 'fashion')}
+    >
+      <animated.div
+        style={{
+          backfaceVisibility: 'hidden',
+          position: 'absolute', 
+          width: '100%',
+          height: '100%',
+          borderRadius: '15px', 
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+        }}
+      >
+        <Image
+          src={`/${image}`}
+          alt={`Fashion item ${index + 1}`}
+          borderRadius="15px"
+          objectFit="cover"
+          width="100%"
+          height="100%"
+        />
+      </animated.div>
+      <animated.div
+        style={{
+          position: 'absolute',
+          top: 0,
+          backfaceVisibility: 'hidden',
+          transform: 'rotateY(180deg)',
+          width: '100%',
+          height: '100%',
+          borderRadius: '15px',
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', 
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white',
+          padding: '1rem',
+          backgroundColor: 'transparent',  
+          boxSizing: 'border-box',
+        }}
+      >
+        <Box
+          backgroundImage="url('/fabric-print.png')"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"  
+          position="absolute" 
+          width="100%"
+          height="100%"
+          borderRadius="15px" 
+        />
+      </animated.div>
+    </animated.div>
+  </Box>
+))}
         </Slider>
       </Box>
       <Box
@@ -199,62 +208,73 @@ const Home = () => {
             Comfort Food
           </Heading>
           <Slider {...settings}>
-            {['coffee.png', 'macarons.png', 'sushi.png', 'pizza.png', 'matcha-cake.png', 'bread.png'].map((image, index) => (
-              <Box p="0.5rem" key={index}>
-                <animated.div
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transform: foodSpringProps[index]?.transform || 'none',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    width: '100%', 
-                    maxWidth: '300px', 
-                    height: 'auto', 
-                    maxHeight: '400px',
-                  }}
-                  onClick={() => handleFlip(index, 'food')}
-                >
-                  <animated.div
-                    style={{
-                      backfaceVisibility: 'hidden',
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: 'lg',
-                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-                    }}
-                  >
-                    <Image
-                      src={`/${image}`}
-                      alt={`Food item ${index + 1}`}
-                      borderRadius="lg"
-                      objectFit="cover"
-                      width="100%"
-                      height="100%"
-                    />
-                  </animated.div>
-                  <animated.div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      backfaceVisibility: 'hidden',
-                      transform: 'rotateY(180deg)',
-                      backgroundColor: '#CA85A0',
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: 'lg',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      color: 'white',
-                      padding: '1rem', 
-                      boxSizing: 'border-box',
-                    }}
-                  >
-                    <Text fontWeight="bold" fontSize="lg">Delicious Food</Text>
-                  </animated.div>
-                </animated.div>
-              </Box>
-            ))}
+          {['coffee.png', 'macarons.png', 'sushi.png', 'pizza.png', 'matcha-cake.png', 'bread.png'].map((image, index) => (
+  <Box p="0.5rem" key={index} width="100%" maxWidth="300px">
+    <animated.div
+      style={{
+        transformStyle: 'preserve-3d',
+        transform: foodSpringProps[index]?.transform || 'none',
+        cursor: 'pointer',
+        position: 'relative',
+        width: '100%',
+        height: '400px', 
+      }}
+      onClick={() => handleFlip(index, 'food')}
+    >
+      <animated.div
+        style={{
+          backfaceVisibility: 'hidden',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          borderRadius: '15px',
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+          overflow: 'hidden', 
+        }}
+      >
+        <Image
+          src={`/${image}`}
+          alt={`Food item ${index + 1}`}
+          borderRadius="15px"
+          objectFit="cover"
+          width="100%"
+          height="100%"
+        />
+      </animated.div>
+      <animated.div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          backfaceVisibility: 'hidden',
+          transform: 'rotateY(180deg)',
+          width: '100%',
+          height: '100%',
+          borderRadius: '15px',
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+          overflow: 'hidden',  
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          backgroundImage="url('/metal.png')"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+          width="100%"
+          height="100%"
+          borderRadius="15px" 
+          boxSizing="border-box" 
+        >
+        </Box>
+      </animated.div>
+    </animated.div>
+  </Box>
+))}
           </Slider>
         </Box>
       </Box>
