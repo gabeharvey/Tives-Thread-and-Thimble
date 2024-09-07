@@ -309,12 +309,12 @@ const Home = () => {
   justifyContent="center" 
   gap="4"
 >
-  <Box
-    bgImage="url('/antique-sewing.png')" 
+<Box
+    bgImage="url('/texas-flag.png')" 
     bgPosition="center"
     bgRepeat="no-repeat"
     bgSize="contain" 
-    borderRadius="md" 
+    borderRadius="15px" 
     width="80vw" 
     height="300px" 
     display="flex" 
@@ -324,14 +324,6 @@ const Home = () => {
     overflow="hidden" 
     boxShadow="none" 
   >
-    <Image
-      src="/antique-sewing.png" 
-      alt="Antique Sewing"
-      borderRadius="md" 
-      objectFit="contain"
-      width="100%"
-      height="100%"
-    />
   </Box>
   <Box
     bgPosition="center"
@@ -361,11 +353,11 @@ const Home = () => {
     </Text>
   </Box>
   <Box
-    bgImage="url('/texas-flag.png')" 
+    bgImage="url('/antique-sewing.png')" 
     bgPosition="center"
     bgRepeat="no-repeat"
     bgSize="contain" 
-    borderRadius="15px" 
+    borderRadius="md" 
     width="80vw" 
     height="300px" 
     display="flex" 
@@ -375,6 +367,14 @@ const Home = () => {
     overflow="hidden" 
     boxShadow="none" 
   >
+    <Image
+      src="/antique-sewing.png" 
+      alt="Antique Sewing"
+      borderRadius="md" 
+      objectFit="contain"
+      width="100%"
+      height="100%"
+    />
   </Box>
 </Box>
   </>
