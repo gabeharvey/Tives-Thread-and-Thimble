@@ -349,7 +349,7 @@ const Home = () => {
   >
     <Text
       fontSize={{ base: '22px', md: '30px' }}
-      fontFamily="'Shadows Into Light Two', cursive"
+      fontFamily="'Sevillana', cursive"
       fontWeight='bold'
       color='red'
       textAlign="center"
