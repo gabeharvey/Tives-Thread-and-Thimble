@@ -140,7 +140,7 @@ import {
                     fontSize="24px"
                     color="#A66A8A"
                     padding="10px"
-                    mr="20px"
+                    mr="18px"
                     _hover={{ bg: 'none' }}
                     _focus={{ boxShadow: 'none' }}
                   />
