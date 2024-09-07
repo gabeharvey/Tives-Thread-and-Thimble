@@ -104,24 +104,23 @@ import {
               transition={{ duration: 0.5, ease: 'easeInOut' }}
             >
               <Box
-                position="fixed"
-                top="0"
-                right="0"
-                width="75%"
-                height="100vh"
-                bg="#F6CBD4"
-                zIndex="overlay"
-                display="block"
-                color="#A66A8A"
-                transition="opacity 0.5s ease"
-                border="5px solid"
-                borderColor="transparent"
-                borderImage="linear-gradient(to right, #F6CBD4, #A66A8A)"
-                borderImageSlice="1"
-                borderTopLeftRadius="30px"  
-                borderBottomLeftRadius="30px" 
-                boxShadow="0 0 15px rgba(166, 106, 138, 0.4)"
-              >
+  position="fixed"
+  top="0"
+  right="0"
+  width="70%"
+  height="100vh"
+  bg="#F6CBD4"
+  zIndex="overlay"
+  display="block"
+  color="#A66A8A"
+  transition="opacity 0.5s ease"
+  sx={{
+    borderImage: "linear-gradient(to right, #F6CBD4, #A66A8A) 1",
+  }}
+  borderTopLeftRadius="30px"
+  borderBottomLeftRadius="30px"
+  boxShadow="0 0 15px rgba(166, 106, 138, 0.8)"
+>
                 <Flex justifyContent="space-between" alignItems="center" mb="1rem">
                   <Text
                     fontSize="2xl"
