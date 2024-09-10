@@ -18,17 +18,14 @@ const Footer = () => {
         fontWeight="bold"
         fontFamily="'Sevillana', cursive"
       >
-        <Link as={RouterLink} to="/" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
-          Home
-        </Link>
         <Link as={RouterLink} to="/about" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           About Us
         </Link>
-        <Link as={RouterLink} to="/services" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
-          Services
-        </Link>
         <Link as={RouterLink} to="/contact" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           Contact
+        </Link>
+        <Link as={RouterLink} to="/privacypolicy" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
+          Privacy Policy
         </Link>
       </Flex>
 
