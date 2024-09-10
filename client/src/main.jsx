@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './components/Home.jsx';
 import Gallery from './components/Gallery.jsx';
-import SignUp from './components/SignUp.jsx';
-import LogIn from './components/LogIn.jsx'; 
+// import SignUp from './components/SignUp.jsx';
+// import LogIn from './components/LogIn.jsx'; 
 import { AuthProvider } from './context/AuthContext.jsx';
 
 const theme = extendTheme({
@@ -31,14 +31,14 @@ const router = createBrowserRouter([
         path: 'gallery', 
         element: <Gallery />
       },
-      {
-        path: 'signup', 
-        element: <SignUp />
-      },
-      {
-        path: 'login', 
-        element: <LogIn />
-      }
+      // {
+      //   path: 'signup', 
+      //   element: <SignUp />
+      // },
+      // {
+      //   path: 'login', 
+      //   element: <LogIn />
+      // }
     ]
   }
 ]);
