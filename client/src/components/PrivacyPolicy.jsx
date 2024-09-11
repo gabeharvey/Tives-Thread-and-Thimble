@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="#A66A8A" fontWeight="900">
+          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="#A66A8A" fontWeight="900">
             Privacy Policy
           </Heading>
           <Text fontSize="2xl" mb="2rem" color="#A66A8A" fontWeight="bold" fontFamily="'Satisfy', cursive">
@@ -38,23 +38,6 @@ const PrivacyPolicy = () => {
           <Text fontSize="lg" mb="2rem" color="#A66A8A" fontFamily="'Satisfy', cursive">
             <strong>Changes to This Policy:</strong> We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on our website.
           </Text>
-          <Button
-            bg="#CA85A0"
-            color="beige"
-            size="lg"
-            borderRadius="md"
-            _hover={{
-              bg: "#C2A8B2",
-              boxShadow: "md",
-            }}
-            _active={{
-              bg: "#B399A3",
-            }}
-            boxShadow="lg"
-            fontFamily="'Satisfy', cursive"
-          >
-            Back to Home
-          </Button>
         </Box>
       </Box>
     </>

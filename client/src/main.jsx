@@ -6,6 +6,7 @@ import Home from './components/Home.jsx';
 import Gallery from './components/Gallery.jsx';
 import SignUp from './components/SignUp.jsx';
 import LogIn from './components/LogIn.jsx'; 
+import Contact from './components/Contact.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'login', 
         element: <LogIn />
+      },
+      {
+        path: 'contact', 
+        element: <Contact />
       },
       {
         path: 'privacypolicy', 
