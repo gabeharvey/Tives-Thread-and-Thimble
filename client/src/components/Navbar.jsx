@@ -16,11 +16,41 @@ import { CloseIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CgMenuGridO } from 'react-icons/cg';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [showCloseIcon, setShowCloseIcon] = useState(false);
 
   const menuItems = ['Gallery', 'Sign Up', 'Log In'];
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => setShowCloseIcon(false), 200);
+    } else {
+      setShowCloseIcon(false);
+    }
+  }, [isOpen]);
+
+  const menuVariants = {
+    hidden: { opacity: 0, x: '100%' },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delayChildren: 0.5, 
+        staggerChildren: 0.5, 
+        duration: 0.5,
+        ease: 'easeInOut',
+      },
+    },
+    exit: { opacity: 0, x: '100%' },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
 
   return (
     <Box
@@ -45,10 +75,13 @@ const Navbar = () => {
         </Heading>
 
         <Spacer />
-
         <IconButton
           aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-          icon={isOpen ? <CloseIcon /> : <CgMenuGridO color="beige"/>}
+          icon={
+            showCloseIcon
+              ? <CloseIcon />
+              : <CgMenuGridO color="beige" />
+          }
           display={['block', 'block', 'none']}
           onClick={isOpen ? onClose : onOpen}
           variant="unstyled"
@@ -59,7 +92,6 @@ const Navbar = () => {
           mt="20px"
           mb="20px"
         />
-
         <Flex
           as="ul"
           display={['none', 'none', 'flex']}
@@ -124,13 +156,12 @@ const Navbar = () => {
             </Link>
           ))}
         </Flex>
-
         {isOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={menuVariants}
           >
             <Box
               position="fixed"
@@ -150,51 +181,42 @@ const Navbar = () => {
               borderBottomLeftRadius="30px"
               boxShadow="0 0 15px rgba(166, 106, 138, 0.8)"
             >
-              <Flex alignItems="center" justifyContent="space-between" mb="1rem">
-                <Flex alignItems="center" ml="20px">
-                  <Image src="black-cat-logo.png" alt="Black Cat Icon" boxSize="40px" marginRight="0.5rem" marginTop="10px"/>
-                  <Text
-                    fontSize="2xl"
-                    fontWeight="bold"
+              <motion.div variants={itemVariants}>
+                <Flex alignItems="center" justifyContent="space-between" mb="1rem">
+                  <Flex alignItems="center" ml="20px">
+                    <Image src="black-cat-logo.png" alt="Black Cat Icon" boxSize="40px" marginRight="0.5rem" marginTop="10px" />
+                    <Text
+                      fontSize="2xl"
+                      fontWeight="bold"
+                      color="#A66A8A"
+                      fontFamily="'Satisfy', cursive"
+                      mt="20px"
+                    >
+                      Menu
+                    </Text>
+                  </Flex>
+                  <IconButton
+                    aria-label="Close Menu"
+                    icon={<CloseIcon />}
+                    onClick={onClose}
+                    variant="unstyled"
+                    fontSize="24px"
                     color="#A66A8A"
-                    fontFamily="'Satisfy', cursive"
-                    mt="20px"
-                  >
-                    Menu
-                  </Text>
+                    padding="10px"
+                    mr="20px"
+                    _hover={{ bg: 'none' }}
+                    _focus={{ boxShadow: 'none' }}
+                  />
                 </Flex>
-                <IconButton
-                  aria-label="Close Menu"
-                  icon={<CloseIcon />}
-                  onClick={onClose}
-                  variant="unstyled"
-                  fontSize="24px"
-                  color="#A66A8A"
-                  padding="10px"
-                  mr="20px"
-                  _hover={{ bg: 'none' }}
-                  _focus={{ boxShadow: 'none' }}
-                />
-              </Flex>
-              <Divider borderColor="#A66A8A" borderWidth="2px" borderStyle="solid" />
-              <Flex direction="column" gap="2rem" color="#A66A8A" alignItems="flex-start" mt="2rem" ml="2rem">
-                <Button
-                  as={RouterLink}
-                  to="/"
-                  variant="link"
-                  fontSize="xl"
-                  fontFamily="'Satisfy', cursive"
-                  onClick={onClose}
-                  color="#A66A8A"
-                  _hover={{ textDecoration: 'none' }}
-                >
-                  Home
-                </Button>
-                {menuItems.map((item) => (
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Divider borderColor="#A66A8A" borderWidth="2px" borderStyle="solid" />
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Flex direction="column" gap="2rem" color="#A66A8A" alignItems="flex-start" mt="2rem" ml="2rem">
                   <Button
-                    key={item}
                     as={RouterLink}
-                    to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                    to="/"
                     variant="link"
                     fontSize="xl"
                     fontFamily="'Satisfy', cursive"
@@ -202,10 +224,25 @@ const Navbar = () => {
                     color="#A66A8A"
                     _hover={{ textDecoration: 'none' }}
                   >
-                    {item}
+                    Home
                   </Button>
-                ))}
-              </Flex>
+                  {menuItems.map((item) => (
+                    <Button
+                      key={item}
+                      as={RouterLink}
+                      to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                      variant="link"
+                      fontSize="xl"
+                      fontFamily="'Satisfy', cursive"
+                      onClick={onClose}
+                      color="#A66A8A"
+                      _hover={{ textDecoration: 'none' }}
+                    >
+                      {item}
+                    </Button>
+                  ))}
+                </Flex>
+              </motion.div>
             </Box>
           </motion.div>
         )}

@@ -79,7 +79,7 @@ const Home = () => {
         px="2rem"
         py="4rem"
         textAlign="center"
-        bg="#F6CBD4"
+        bg="transparent"
         backgroundImage="url('/fashion-girl.png')"
         backgroundPosition="center top"
         backgroundRepeat="no-repeat"
@@ -185,7 +185,7 @@ const Home = () => {
         textAlign="center"
         maxW="1280px"
         mx="auto"
-        bg="#F6CBD4"
+        bg="transparent"
       >
         <Image
           src="/horizontal-zipper.png"
@@ -286,7 +286,7 @@ const Home = () => {
         textAlign="center"
         maxW="1280px"
         mx="auto"
-        bg="#F6CBD4"
+        bg="transparent"
       >
         <Image
           src="/red-rope.png"
@@ -301,7 +301,7 @@ const Home = () => {
   px="2rem"
   py="6rem"
   textAlign="center"
-  bg="#F6CBD4"
+  bg="transparent"
   backgroundImage="url('/flowers.png')"
   backgroundPosition="center"
   backgroundRepeat="no-repeat"
