@@ -29,11 +29,11 @@ const SignUp = () => {
         mx="auto"
       >
         <FormControl mb="1rem" fontFamily= "'Lato', sans-serif" fontWeight="bold" color="beige">
-          <FormLabel fontWeight="bold" fontFamily="'Satisfy', cursive">Name</FormLabel>
+          <FormLabel fontWeight="bold" fontFamily="'Satisfy', cursive">User Name</FormLabel>
           <Input
             fontFamily= "'Lato', sans-serif"
             type="text"
-            placeholder="Enter your name"
+            placeholder="Enter Your User Name"
             backgroundColor="white"
             color="black"
             fontWeight="bold"
@@ -45,7 +45,7 @@ const SignUp = () => {
           <Input
             fontFamily= "'Lato', sans-serif"
             type="email"
-            placeholder="Enter your email"
+            placeholder="Enter Your Email"
             backgroundColor="white"
             color="black"
             fontWeight="bold"
@@ -57,7 +57,7 @@ const SignUp = () => {
           <Input
             fontFamily= "'Lato', sans-serif"
             type="password"
-            placeholder="Enter your password"
+            placeholder="Enter Your Password"
             backgroundColor="white"
             color="black"
             fontWeight="bold"
