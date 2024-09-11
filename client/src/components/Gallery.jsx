@@ -4,11 +4,11 @@ import { Box, Heading, Image } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useSpring, animated } from '@react-spring/web';
 
-const createSpringProps = (flips, index) => {
+const createZoomProps = (flips, index) => {
   return flips.map(flip =>
     useSpring({
-      transform: `perspective(600px) rotateY(${flip ? 180 : 0}deg)`,
-      config: { mass: 5, tension: 800, friction: 80 },
+      transform: flip ? `scale(1.2)` : `scale(1)`, 
+      config: { tension: 300, friction: 20 },
     })
   )[index];
 };
@@ -22,7 +22,7 @@ const Gallery = () => {
     setGalleryFlipped(newFlipped);
   };
 
-  const gallerySpringProps = galleryFlipped.map((flip, index) => createSpringProps(galleryFlipped, index));
+  const gallerySpringProps = galleryFlipped.map((flip, index) => createZoomProps(galleryFlipped, index));
 
   const settings = {
     dots: false,
@@ -62,7 +62,7 @@ const Gallery = () => {
         py="4rem"
         textAlign="center"
         bg="#F6CBD4"
-        backgroundImage="url('/gallery-background.png')" // Add a background image for the gallery
+        backgroundImage="url('/cat-background.png')"
         backgroundPosition="center top"
         backgroundRepeat="no-repeat"
         backgroundSize="contain"
@@ -74,16 +74,17 @@ const Gallery = () => {
           </Heading>
         </Box>
         <Slider {...settings}>
-          {['gallery-image1.png', 'gallery-image2.png', 'gallery-image3.png', 'gallery-image4.png', 'gallery-image5.png', 'gallery-image6.png'].map((image, index) => (
+          {['ai-dress.png', 'ai-dress-1.png', 'ai-dress-2.png', 'ai-dress-3.png', 'ai-dress-4.png', 'ai-dress-5.png'].map((image, index) => (
             <Box p="0.5rem" key={index} width="100%" maxWidth="300px">
               <animated.div
                 style={{
                   transformStyle: 'preserve-3d',
-                  transform: gallerySpringProps[index]?.transform || 'none',
+                  transform: gallerySpringProps[index]?.transform || 'none', 
                   cursor: 'pointer',
                   position: 'relative',
                   width: '100%',
                   height: '400px', 
+                  transition: 'transform 0.3s ease', 
                 }}
                 onClick={() => handleFlip(index)}
               >
@@ -94,7 +95,6 @@ const Gallery = () => {
                     width: '100%',
                     height: '100%',
                     borderRadius: '15px', 
-                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                   }}
                 >
                   <Image
@@ -115,7 +115,6 @@ const Gallery = () => {
                     width: '100%',
                     height: '100%',
                     borderRadius: '15px',
-                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -140,19 +139,6 @@ const Gallery = () => {
             </Box>
           ))}
         </Slider>
-      </Box>
-      <Box
-        textAlign="center"
-        maxW="1280px"
-        mx="auto"
-        bg="#F6CBD4"
-      >
-        <Image
-          src="/gallery-footer-image.png" // Footer image
-          alt="Gallery Footer"
-          width="100%"
-          height="auto"
-        />
       </Box>
     </>
   );

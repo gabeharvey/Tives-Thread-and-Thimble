@@ -10,16 +10,16 @@ const SignUp = () => {
       py="4rem"
       textAlign="center"
       bg="#F6CBD4"
-      backgroundImage="url('/signup-background.png')" 
+      backgroundImage="url('/flower-background.png')" 
       backgroundPosition="center top"
       backgroundRepeat="no-repeat"
       backgroundSize="contain"
       mt={20}
+      mb="10rem"
     >
       <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="#A66A8A" fontWeight="900">
         Create an Account
       </Heading>
-
       <Box
         bg="#CA85A0"
         p="2rem"
@@ -43,15 +43,6 @@ const SignUp = () => {
         <Button colorScheme="whiteAlpha" width="full" fontFamily="'Shadows Into Light Two', cursive" color="beige">
           Sign Up
         </Button>
-      </Box>
-
-      <Box mt="3rem">
-        <Image
-          src="/signup-footer-image.png" 
-          alt="Sign Up Footer"
-          width="100%"
-          height="auto"
-        />
       </Box>
     </Box>
   );

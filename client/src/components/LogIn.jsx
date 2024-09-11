@@ -10,16 +10,16 @@ const LogIn = () => {
       py="4rem"
       textAlign="center"
       bg="#F6CBD4"
-      backgroundImage="url('/login-background.png')"
+      backgroundImage="url('/flower-background.png')"
       backgroundPosition="center top"
       backgroundRepeat="no-repeat"
       backgroundSize="contain"
       mt={20}
+      mb="10rem"
     >
       <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="#A66A8A" fontWeight="900">
         Welcome Back
       </Heading>
-
       <Box
         bg="#CA85A0"
         p="2rem"
@@ -39,15 +39,6 @@ const LogIn = () => {
         <Button colorScheme="whiteAlpha" width="full" fontFamily="'Shadows Into Light Two', cursive" color="beige">
           Log In
         </Button>
-      </Box>
-
-      <Box mt="3rem">
-        <Image
-          src="/login-footer-image.png" 
-          alt="Log In Footer"
-          width="100%"
-          height="auto"
-        />
       </Box>
     </Box>
   );
