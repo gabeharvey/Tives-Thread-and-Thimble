@@ -36,7 +36,7 @@ const Navbar = () => {
         <Heading
           as={RouterLink}
           to="/"
-          fontSize="3xl"
+          fontSize="xl"
           fontFamily="'Shadows Into Light Two', cursive"
           color="beige"
           letterSpacing="wider"
