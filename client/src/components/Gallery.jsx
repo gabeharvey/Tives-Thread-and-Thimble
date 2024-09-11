@@ -80,8 +80,8 @@ const Gallery = () => {
               key={index} 
               width="100%" 
               maxWidth="300px"
-              mt="4rem" // Add margin on top 
-              mb="4rem" // Add margin on bottom
+              mt="4rem" 
+              mb="4rem" 
             >
               <animated.div
                 style={{
