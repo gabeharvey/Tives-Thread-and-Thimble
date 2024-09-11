@@ -4,6 +4,7 @@ import { Box, Heading, Text, Button, Image } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useSpring, animated } from '@react-spring/web';
 import quotes from '../utils/quotes.json';
+import { Link } from 'react-router-dom';
 
 const createSpringProps = (flips, index) => {
   return flips.map(flip =>
@@ -92,6 +93,7 @@ const Home = () => {
           <Text fontSize="2xl" mb="2rem" color="#A66A8A" fontWeight="bold" fontFamily="'Satisfy', cursive">
             Tailored Fashion. Handcrafted Excellence.
           </Text>
+          <Link to="/gallery">
           <Button
             bg="#CA85A0"
             color="beige"
@@ -109,6 +111,7 @@ const Home = () => {
           >
             Explore Our Collection
           </Button>
+          </Link>
         </Box>
         <Slider {...settings}>
         {['black-dress.png', 'green-gold-dress.png', 'vintage-dress.png', 'teal-dress.png', 'hat-dress.png', 'flower-dress.png'].map((image, index) => (
