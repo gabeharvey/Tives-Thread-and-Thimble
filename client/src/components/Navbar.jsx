@@ -89,6 +89,7 @@ const Navbar = () => {
           color="beige"
           _hover={{ bg: 'none' }}
           _focus={{ boxShadow: 'none' }}
+          _active={{ transform: 'rotate(90deg)', transition: 'transform 0.3s ease-in-out' }}
           mt="20px"
           mb="20px"
         />
@@ -206,6 +207,10 @@ const Navbar = () => {
                     mr="20px"
                     _hover={{ bg: 'none' }}
                     _focus={{ boxShadow: 'none' }}
+                    _active={{
+                      transform: 'rotate(90deg)',
+                      transition: 'transform 0.3s ease-in-out',
+                    }}
                   />
                 </Flex>
               </motion.div>
