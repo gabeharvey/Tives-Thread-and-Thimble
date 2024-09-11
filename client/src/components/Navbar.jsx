@@ -29,7 +29,7 @@ const Navbar = () => {
       position="relative"
       boxShadow="lg"
       mb="20px"
-      fontFamily="'Sevillana', cursive"
+      fontFamily="'Satisfy', cursive"
     >
       <Flex alignItems="center" justifyContent="space-between">
         <Heading
@@ -47,7 +47,7 @@ const Navbar = () => {
 
         <IconButton
           aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-          icon={isOpen ? <CloseIcon /> : <CgMenuGridO />}
+          icon={isOpen ? <CloseIcon /> : <CgMenuGridO color="beige"/>}
           display={['block', 'block', 'none']}
           onClick={isOpen ? onClose : onOpen}
           variant="unstyled"
@@ -129,7 +129,7 @@ const Navbar = () => {
                   fontWeight="bold"
                   color="#A66A8A"
                   padding="1rem"
-                  fontFamily="'Sevillana', cursive"
+                  fontFamily="'Satisfy', cursive"
                   mt="20px"
                 >
                   Menu
@@ -156,7 +156,7 @@ const Navbar = () => {
                     to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
                     variant="link"
                     fontSize="xl"
-                    fontFamily="'Sevillana', cursive"
+                    fontFamily="'Satisfy', cursive"
                     onClick={onClose}
                     color="#A66A8A"
                     _hover={{ textDecoration: 'none' }}

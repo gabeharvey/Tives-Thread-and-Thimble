@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Heading, Button, Input, FormControl, FormLabel, Image } from '@chakra-ui/react';
+import { Box, Heading, Button, Input, FormControl, FormLabel } from '@chakra-ui/react';
 
 const SignUp = () => {
   return (
@@ -10,14 +10,14 @@ const SignUp = () => {
       py="4rem"
       textAlign="center"
       bg="#F6CBD4"
-      backgroundImage="url('/flower-background.png')" 
+      backgroundImage="url('/flower-background.png')"
       backgroundPosition="center top"
       backgroundRepeat="no-repeat"
       backgroundSize="contain"
       mt={20}
       mb="10rem"
     >
-      <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="#A66A8A" fontWeight="900">
+      <Heading as="h1" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="#A66A8A" fontWeight="900">
         Create an Account
       </Heading>
       <Box
@@ -28,19 +28,43 @@ const SignUp = () => {
         maxWidth="500px"
         mx="auto"
       >
-        <FormControl mb="1rem" fontFamily="'Shadows Into Light Two', cursive" fontWeight="bold" color="beige">
-          <FormLabel fontWeight="bold">Name</FormLabel>
-          <Input type="text" placeholder="Enter your name" backgroundColor="white" color="black" fontWeight="bold" />
+        <FormControl mb="1rem" fontFamily= "'Lato', sans-serif" fontWeight="bold" color="beige">
+          <FormLabel fontWeight="bold" fontFamily="'Satisfy', cursive">Name</FormLabel>
+          <Input
+            fontFamily= "'Lato', sans-serif"
+            type="text"
+            placeholder="Enter your name"
+            backgroundColor="white"
+            color="black"
+            fontWeight="bold"
+            focusBorderColor="gray.300" 
+          />
         </FormControl>
-        <FormControl mb="1rem" fontFamily="'Shadows Into Light Two', cursive" fontWeight="bold" color="beige">
-          <FormLabel fontWeight="bold">Email</FormLabel>
-          <Input type="email" placeholder="Enter your email" backgroundColor="white" color="black" fontWeight="bold" />
+        <FormControl mb="1rem" fontFamily= "'Lato', sans-serif" fontWeight="bold" color="beige">
+          <FormLabel fontWeight="bold" fontFamily="'Satisfy', cursive">Email</FormLabel>
+          <Input
+            fontFamily= "'Lato', sans-serif"
+            type="email"
+            placeholder="Enter your email"
+            backgroundColor="white"
+            color="black"
+            fontWeight="bold"
+            focusBorderColor="gray.300" 
+          />
         </FormControl>
-        <FormControl mb="1rem" fontFamily="'Shadows Into Light Two', cursive" fontWeight="bold" color="beige">
-          <FormLabel fontWeight="bold">Password</FormLabel>
-          <Input type="password" placeholder="Enter your password" backgroundColor="white" color="black" fontWeight="bold" />
+        <FormControl mb="1rem" fontFamily= "'Lato', sans-serif" fontWeight="bold" color="beige">
+          <FormLabel fontWeight="bold" fontFamily="'Satisfy', cursive">Password</FormLabel>
+          <Input
+            fontFamily= "'Lato', sans-serif"
+            type="password"
+            placeholder="Enter your password"
+            backgroundColor="white"
+            color="black"
+            fontWeight="bold"
+            focusBorderColor="gray.300" 
+          />
         </FormControl>
-        <Button colorScheme="whiteAlpha" width="full" fontFamily="'Shadows Into Light Two', cursive" color="beige">
+        <Button colorScheme="whiteAlpha" width="full" fontFamily="'Satisfy', cursive" color="beige">
           Sign Up
         </Button>
       </Box>

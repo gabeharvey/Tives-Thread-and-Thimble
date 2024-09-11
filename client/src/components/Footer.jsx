@@ -16,7 +16,7 @@ const Footer = () => {
         display={display}
         color="beige"
         fontWeight="bold"
-        fontFamily="'Sevillana', cursive"
+        fontFamily="'Satisfy', cursive"
       >
         <Link as={RouterLink} to="/about" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           About Us
@@ -29,7 +29,7 @@ const Footer = () => {
         </Link>
       </Flex>
 
-      <Text fontSize="md" color="beige" fontFamily="'Sevillana', cursive">
+      <Text fontSize="md" color="beige" fontFamily="'Satisfy', cursive">
         &copy; {new Date().getFullYear()} Tive's Thread and Thimble. All rights reserved.
       </Text>
     </Box>
