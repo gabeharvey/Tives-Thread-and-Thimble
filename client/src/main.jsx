@@ -6,6 +6,7 @@ import Home from './components/Home.jsx';
 import Gallery from './components/Gallery.jsx';
 import SignUp from './components/SignUp.jsx';
 import LogIn from './components/LogIn.jsx'; 
+import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 
 const theme = extendTheme({
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: 'login', 
         element: <LogIn />
+      },
+      {
+        path: 'privacypolicy', 
+        element: <PrivacyPolicy />
       }
     ]
   }
