@@ -47,7 +47,7 @@ const SignUp = () => {
 
       <Box mt="3rem">
         <Image
-          src="/signup-footer-image.png" // Footer image specific to Sign Up if needed
+          src="/signup-footer-image.png" 
           alt="Sign Up Footer"
           width="100%"
           height="auto"
