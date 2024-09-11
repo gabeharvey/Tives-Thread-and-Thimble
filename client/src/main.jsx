@@ -5,10 +5,12 @@ import App from './App.jsx';
 import Home from './components/Home.jsx';
 import Gallery from './components/Gallery.jsx';
 import SignUp from './components/SignUp.jsx';
-import LogIn from './components/LogIn.jsx'; 
+import LogIn from './components/LogIn.jsx';
 import AboutUs from './components/AboutUs.jsx';
 import Contact from './components/Contact.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
+import NotFound from './components/NotFound.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 
 const theme = extendTheme({
@@ -26,33 +28,44 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
+      { index: true, element: <Home /> },
+      { path: 'login', element: <LogIn /> },
+      { path: 'signup', element: <SignUp /> },
       {
-        index: true,
-        element: <Home />
+        path: 'gallery',
+        element: (
+          <PrivateRoute>
+            <Gallery />
+          </PrivateRoute>
+        )
       },
       {
-        path: 'gallery', 
-        element: <Gallery />
+        path: 'about',
+        element: (
+          <PrivateRoute>
+            <AboutUs />
+          </PrivateRoute>
+        )
       },
       {
-        path: 'signup', 
-        element: <SignUp />
+        path: 'contact',
+        element: (
+          <PrivateRoute>
+            <Contact />
+          </PrivateRoute>
+        )
       },
       {
-        path: 'login', 
-        element: <LogIn />
+        path: 'privacypolicy',
+        element: (
+          <PrivateRoute>
+            <PrivacyPolicy />
+          </PrivateRoute>
+        )
       },
       {
-        path: 'about', 
-        element: <AboutUs />
-      },
-      {
-        path: 'contact', 
-        element: <Contact />
-      },
-      {
-        path: 'privacypolicy', 
-        element: <PrivacyPolicy />
+        path: '*',
+        element: <NotFound />
       }
     ]
   }
@@ -65,4 +78,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ChakraProvider>
   </AuthProvider>
 );
-
