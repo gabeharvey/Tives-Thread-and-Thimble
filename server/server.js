@@ -25,7 +25,7 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -39,7 +39,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log('MongoDB URI:', process.env.MONGODB_URI);
+app.options('*', cors());
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/tives-thread-and-thimble', {
   useNewUrlParser: true,
@@ -137,6 +137,11 @@ app.get('/api/privacypolicy', authenticateJWT, (req, res) => {
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(PORT, () => {
