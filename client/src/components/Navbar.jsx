@@ -10,6 +10,7 @@ import {
   useDisclosure,
   Divider,
   Text,
+  Image
 } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
@@ -67,6 +68,32 @@ const Navbar = () => {
           alignItems="left"
           gap="2rem"
         >
+          <Link
+            as={RouterLink}
+            to="/"
+            fontSize="md"
+            color="beige"
+            fontWeight="bold"
+            position="relative"
+            _hover={{
+              textDecoration: 'none',
+              _after: {
+                width: '100%',
+              },
+            }}
+            _after={{
+              content: '""',
+              position: 'absolute',
+              bottom: '-0.2rem',
+              left: 0,
+              width: 0,
+              height: '2px',
+              bg: 'beige',
+              transition: 'width 0.3s ease',
+            }}
+          >
+            Home
+          </Link>
           {menuItems.map((item) => (
             <Link
               key={item}
@@ -123,17 +150,19 @@ const Navbar = () => {
               borderBottomLeftRadius="30px"
               boxShadow="0 0 15px rgba(166, 106, 138, 0.8)"
             >
-              <Flex justifyContent="space-between" alignItems="center" mb="1rem">
-                <Text
-                  fontSize="2xl"
-                  fontWeight="bold"
-                  color="#A66A8A"
-                  padding="1rem"
-                  fontFamily="'Satisfy', cursive"
-                  mt="20px"
-                >
-                  Menu
-                </Text>
+              <Flex alignItems="center" justifyContent="space-between" mb="1rem">
+                <Flex alignItems="center" ml="20px">
+                  <Image src="black-cat-logo.png" alt="Black Cat Icon" boxSize="40px" marginRight="0.5rem" marginTop="10px"/>
+                  <Text
+                    fontSize="2xl"
+                    fontWeight="bold"
+                    color="#A66A8A"
+                    fontFamily="'Satisfy', cursive"
+                    mt="20px"
+                  >
+                    Menu
+                  </Text>
+                </Flex>
                 <IconButton
                   aria-label="Close Menu"
                   icon={<CloseIcon />}
@@ -149,6 +178,18 @@ const Navbar = () => {
               </Flex>
               <Divider borderColor="#A66A8A" borderWidth="2px" borderStyle="solid" />
               <Flex direction="column" gap="2rem" color="#A66A8A" alignItems="flex-start" mt="2rem" ml="2rem">
+                <Button
+                  as={RouterLink}
+                  to="/"
+                  variant="link"
+                  fontSize="xl"
+                  fontFamily="'Satisfy', cursive"
+                  onClick={onClose}
+                  color="#A66A8A"
+                  _hover={{ textDecoration: 'none' }}
+                >
+                  Home
+                </Button>
                 {menuItems.map((item) => (
                   <Button
                     key={item}

@@ -69,7 +69,7 @@ const Gallery = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="#A66A8A" fontWeight="900">
+          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="beige" fontWeight="900">
             Our Exquisite Gallery
           </Heading>
         </Box>
