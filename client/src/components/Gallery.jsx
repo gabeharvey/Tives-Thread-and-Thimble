@@ -4,10 +4,10 @@ import { Box, Heading, Image } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useSpring, animated } from '@react-spring/web';
 
-const createZoomProps = (flips, index) => {
+const createSkewProps = (flips, index) => {
   return flips.map(flip =>
     useSpring({
-      transform: flip ? `scale(1.2)` : `scale(1)`, 
+      transform: flip ? `skew(10deg, 10deg)` : `skew(0deg, 0deg)`, // Skew animation
       config: { tension: 300, friction: 20 },
     })
   )[index];
@@ -22,7 +22,7 @@ const Gallery = () => {
     setGalleryFlipped(newFlipped);
   };
 
-  const gallerySpringProps = galleryFlipped.map((flip, index) => createZoomProps(galleryFlipped, index));
+  const gallerySpringProps = galleryFlipped.map((flip, index) => createSkewProps(galleryFlipped, index));
 
   const settings = {
     dots: false,
@@ -75,7 +75,14 @@ const Gallery = () => {
         </Box>
         <Slider {...settings}>
           {['ai-dress.png', 'ai-dress-1.png', 'ai-dress-2.png', 'ai-dress-3.png', 'ai-dress-4.png', 'ai-dress-5.png'].map((image, index) => (
-            <Box p="0.5rem" key={index} width="100%" maxWidth="300px">
+            <Box 
+              p="0.5rem" 
+              key={index} 
+              width="100%" 
+              maxWidth="300px"
+              mt="4rem" // Add margin on top 
+              mb="4rem" // Add margin on bottom
+            >
               <animated.div
                 style={{
                   transformStyle: 'preserve-3d',
@@ -84,7 +91,9 @@ const Gallery = () => {
                   position: 'relative',
                   width: '100%',
                   height: '400px', 
-                  transition: 'transform 0.3s ease', 
+                  transition: 'transform 0.3s ease',
+                  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)', 
+                  borderRadius: '15px', 
                 }}
                 onClick={() => handleFlip(index)}
               >
@@ -94,7 +103,7 @@ const Gallery = () => {
                     position: 'absolute',
                     width: '100%',
                     height: '100%',
-                    borderRadius: '15px', 
+                    borderRadius: '15px',
                   }}
                 >
                   <Image
@@ -120,7 +129,7 @@ const Gallery = () => {
                     alignItems: 'center',
                     color: 'beige',
                     padding: '1rem',
-                    backgroundColor: 'transparent',  
+                    backgroundColor: 'transparent',
                     boxSizing: 'border-box',
                   }}
                 >
@@ -128,11 +137,11 @@ const Gallery = () => {
                     backgroundImage="url('/fabric-print.png')"
                     backgroundPosition="center"
                     backgroundRepeat="no-repeat"
-                    backgroundSize="cover"  
-                    position="absolute" 
+                    backgroundSize="cover"
+                    position="absolute"
                     width="100%"
                     height="100%"
-                    borderRadius="15px" 
+                    borderRadius="15px"
                   />
                 </animated.div>
               </animated.div>
