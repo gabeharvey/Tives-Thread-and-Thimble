@@ -371,14 +371,6 @@ const Home = () => {
     overflow="hidden" 
     boxShadow="none" 
   >
-    <Image
-      src="/heart.png" 
-      alt="Heart"
-      borderRadius="md" 
-      objectFit="contain"
-      width="100%"
-      height="100%"
-    />
   </Box>
 </Box>
   </>
