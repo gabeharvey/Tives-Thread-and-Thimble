@@ -1,18 +1,28 @@
 import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import jwtDecode from 'jwt-decode';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
-  const [user, setUser] = useState(null); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const verifyToken = async () => {
       const token = localStorage.getItem('authToken');
+      console.log('Retrieved token:', token); 
+      
       if (token) {
         try {
+          const isValidTokenFormat = token.split('.').length === 3;
+          if (!isValidTokenFormat) {
+            throw new Error('Invalid token format');
+          }
+
+          console.log('Token before API call:', token);
+
           const apiUrl = import.meta.env.VITE_API_URL;
           const response = await fetch(`${apiUrl}/api/verify-token`, {
             method: 'POST',
@@ -26,8 +36,16 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
             if (data.valid) {
               setIsAuthenticated(true);
-              setUser(data.user); 
+              try {
+                const decoded = jwtDecode(token);
+                setUser(decoded);
+              } catch (error) {
+                console.error('Failed to decode token:', error.message);
+                setIsAuthenticated(false);
+                localStorage.removeItem('authToken');
+              }
             } else {
+              console.warn('Token is not valid according to server');
               setIsAuthenticated(false);
               localStorage.removeItem('authToken');
             }
@@ -35,7 +53,7 @@ export const AuthProvider = ({ children }) => {
             throw new Error('Failed to verify token');
           }
         } catch (error) {
-          console.error('Token verification failed', error);
+          console.error('Token verification failed:', error.message);
           setIsAuthenticated(false);
           localStorage.removeItem('authToken');
         }
@@ -48,16 +66,29 @@ export const AuthProvider = ({ children }) => {
     verifyToken();
   }, []);
 
-  const login = (token, userData) => {
+  const login = (token) => {
+    const isValidTokenFormat = token.split('.').length === 3;
+    if (!isValidTokenFormat) {
+      console.error('Invalid token format');
+      return;
+    }
+
     localStorage.setItem('authToken', token);
     setIsAuthenticated(true);
-    setUser(userData); 
+    try {
+      const decoded = jwtDecode(token);
+      setUser(decoded);
+    } catch (error) {
+      console.error('Failed to decode token:', error.message);
+      setIsAuthenticated(false);
+      localStorage.removeItem('authToken');
+    }
   };
 
   const logout = () => {
     localStorage.removeItem('authToken');
     setIsAuthenticated(false);
-    setUser(null); 
+    setUser(null);
   };
 
   if (loading) {

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState, useContext } from 'react';
 import { Box, Heading, Button, Input, FormControl, FormLabel, Text } from '@chakra-ui/react';
 import axios from 'axios';
@@ -17,17 +16,12 @@ const LogIn = () => {
     try {
       const response = await axios.post(`${API_URL}/api/login`, { username, password });
       console.log('Login response:', response.data);
-      localStorage.setItem('authToken', response.data.token);
       login(response.data.token);
       navigate('/');
     } catch (error) {
       console.error('Error logging in:', error);
       alert('Error logging in: ' + (error.response?.data?.message || 'Unknown error'));
     }
-  };
-
-  const handleLinkClick = (path) => {
-    navigate(path);
   };
 
   return (
@@ -104,7 +98,7 @@ const LogIn = () => {
           fontSize="15px"
           fontWeight="bold"
           _hover={{ textDecoration: 'underline' }}
-          onClick={() => handleLinkClick('/signup')}
+          onClick={() => navigate('/signup')}
         >
           Sign Up
         </Text>{' '}

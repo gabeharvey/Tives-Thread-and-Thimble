@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState, useContext } from 'react';
 import { Box, Heading, Button, Input, FormControl, FormLabel, Text } from '@chakra-ui/react';
 import axios from 'axios';
@@ -14,20 +13,32 @@ const SignUp = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/api/signup`, { username, email, password });
-      console.log('Signup response:', response.data);
-      localStorage.setItem('authToken', response.data.token);
-      login(response.data.token);
-      alert('Signup successful');
-      navigate('/');
+      const response = await axios.post(`${API_URL}/api/signup`, {
+        username,
+        email,
+        password
+      });
+  
+      console.log('Signup Response:', response.data);
+  
+      const { token, message } = response.data;
+  
+      if (message === 'User created successfully') {
+        alert('Signup successful');
+        navigate('/login'); 
+      } else {
+        console.error('Unexpected response:', response.data);
+        alert(`Signup failed: ${message || 'Unknown error'}`);
+      }
     } catch (error) {
-      console.error('Error signing up:', error);
+      console.error('Error signing up:', error.response?.data || error.message);
       alert('Error signing up: ' + (error.response?.data?.message || 'Unknown error'));
     }
-  };
-
+  };  
+  
   return (
     <Box
       maxW="1280px"
@@ -97,6 +108,7 @@ const SignUp = () => {
           />
         </FormControl>
         <Button
+          type="submit"
           onClick={handleSignup}
           colorScheme="whiteAlpha"
           width="full"

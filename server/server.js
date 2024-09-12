@@ -39,8 +39,6 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.options('*', cors());
-
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/tives-thread-and-thimble', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -69,11 +67,15 @@ app.post('/api/signup', async (req, res) => {
     if (!username || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
     }
-
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, email, password: hashedPassword });
     await newUser.save();
-    res.status(201).json({ message: 'User created successfully' });
+    const token = jwt.sign({ id: newUser._id, username }, JWT_SECRET, { expiresIn: '1h' });
+    res.status(201).json({ message: 'User created successfully', token });
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ message: 'Error creating user', error: error.message });
@@ -97,7 +99,7 @@ app.post('/api/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
     res.status(200).json({ message: 'Login successful', token });
   } catch (error) {
     console.error('Error logging in:', error);
@@ -107,12 +109,21 @@ app.post('/api/login', async (req, res) => {
 
 app.post('/api/verify-token', (req, res) => {
   const { token } = req.body;
-  if (!token) return res.status(400).json({ valid: false });
-
-  jwt.verify(token, JWT_SECRET, (err) => {
-    if (err) return res.status(401).json({ valid: false });
-    res.status(200).json({ valid: true });
-  });
+  try {
+    if (!token) {
+      return res.status(400).json({ valid: false });
+    }
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+      if (err) {
+        console.error('Token verification error:', err);
+        return res.status(401).json({ valid: false });
+      }
+      res.json({ valid: true, decoded });
+    });
+  } catch (error) {
+    console.error('Error verifying token:', error);
+    res.status(500).json({ valid: false });
+  }
 });
 
 app.get('/api/protected', authenticateJWT, (req, res) => {

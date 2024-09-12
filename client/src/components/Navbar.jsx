@@ -152,12 +152,22 @@ const Navbar = () => {
               >
                 Gallery
               </Link>
+              <Text
+                fontSize="md"
+                color="beige"
+                fontWeight="bold"
+                position="relative"
+                display={['none', 'none', 'block']}
+              >
+                Logged in as {user?.username}
+              </Text>
               <Button
                 onClick={logout} 
                 fontSize="md"
                 color="beige"
                 variant="unstyled"
                 fontWeight="bold"
+                _hover={{ textDecoration: 'underline' }}
               >
                 Logout
               </Button>
@@ -294,6 +304,9 @@ const Navbar = () => {
                       >
                         Gallery
                       </Button>
+                      <Text fontSize="lg" color="#A66A8A">
+                        Logged in as {user?.username}
+                      </Text>
                       <Button
                         onClick={logout}
                         variant="link"

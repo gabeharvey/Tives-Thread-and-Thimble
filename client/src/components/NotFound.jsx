@@ -9,7 +9,7 @@ const NotFound = () => {
       px="2rem"
       py="4rem"
       textAlign="center"
-      bg="#F6CBD4"
+      bg="transparent"
       backgroundImage="url('/notfound-background.png')"
       backgroundPosition="center top"
       backgroundRepeat="no-repeat"
