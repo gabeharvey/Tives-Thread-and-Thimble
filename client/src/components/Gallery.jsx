@@ -61,7 +61,7 @@ const Gallery = () => {
         px="2rem"
         py="4rem"
         textAlign="center"
-        bg="#F6CBD4"
+        bg="transparent"
         backgroundImage="url('/cat-background.png')"
         backgroundPosition="center top"
         backgroundRepeat="no-repeat"
