@@ -302,7 +302,7 @@ const Home = () => {
   py="6rem"
   textAlign="center"
   bg="transparent"
-  backgroundImage="url('/black-cat-2.png')"
+  backgroundImage="url('/love.png')"
   backgroundPosition="center"
   backgroundRepeat="no-repeat"
   backgroundSize="contain"
@@ -357,7 +357,7 @@ const Home = () => {
     </Text>
   </Box>
   <Box
-    bgImage="url('/heart.png')" 
+    bgImage="url('/black-cat-2.png')" 
     bgPosition="center"
     bgRepeat="no-repeat"
     bgSize="contain" 
