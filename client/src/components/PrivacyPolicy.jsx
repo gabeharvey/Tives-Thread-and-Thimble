@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
         px="2rem"
         py="4rem"
         textAlign="center"
-        bg="#F6CBD4"
+        bg="transparent"
         backgroundImage="url('/privacy-background.png')"
         backgroundPosition="center top"
         backgroundRepeat="no-repeat"
