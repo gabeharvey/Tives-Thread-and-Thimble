@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import {
   Box,
   Flex,
@@ -17,14 +16,12 @@ import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CgMenuGridO } from 'react-icons/cg';
 import { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext'; // Make sure this points to your AuthContext
+import { AuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showCloseIcon, setShowCloseIcon] = useState(false);
-  const { user, logout } = useContext(AuthContext); // Access user and logout from context
-
-  const menuItems = user ? ['Gallery', 'Logout'] : ['Sign Up', 'Log In']; // Conditionally set menu items
+  const { isAuthenticated, user, logout } = useContext(AuthContext); 
 
   useEffect(() => {
     if (isOpen) {
@@ -64,7 +61,7 @@ const Navbar = () => {
       mb="20px"
       fontFamily="'Satisfy', cursive"
     >
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex alignItems="center" justifyContent="space-between" wrap="wrap">
         <Heading
           as={RouterLink}
           to="/"
@@ -100,8 +97,10 @@ const Navbar = () => {
           display={['none', 'none', 'flex']}
           listStyleType="none"
           ml="auto"
-          alignItems="left"
+          alignItems="center"
           gap="2rem"
+          flex="1"
+          justifyContent="space-evenly"
         >
           <Link
             as={RouterLink}
@@ -127,23 +126,11 @@ const Navbar = () => {
           >
             Home
           </Link>
-          {menuItems.map((item) =>
-            item === 'Logout' ? (
-              <Button
-                key={item}
-                onClick={logout} // Trigger logout on button click
-                fontSize="md"
-                color="beige"
-                variant="unstyled"
-                fontWeight="bold"
-              >
-                Logout
-              </Button>
-            ) : (
+          {isAuthenticated ? (
+            <>
               <Link
-                key={item}
                 as={RouterLink}
-                to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                to="/gallery"
                 fontSize="md"
                 color="beige"
                 fontWeight="bold"
@@ -163,9 +150,69 @@ const Navbar = () => {
                   transition: 'width 0.3s ease',
                 }}
               >
-                {item}
+                Gallery
               </Link>
-            )
+              <Button
+                onClick={logout} 
+                fontSize="md"
+                color="beige"
+                variant="unstyled"
+                fontWeight="bold"
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link
+                as={RouterLink}
+                to="/signup"
+                fontSize="md"
+                color="beige"
+                fontWeight="bold"
+                position="relative"
+                _hover={{
+                  textDecoration: 'none',
+                  _after: { width: '100%' },
+                }}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-0.2rem',
+                  left: 0,
+                  width: 0,
+                  height: '2px',
+                  bg: 'beige',
+                  transition: 'width 0.3s ease',
+                }}
+              >
+                Sign Up
+              </Link>
+              <Link
+                as={RouterLink}
+                to="/login"
+                fontSize="md"
+                color="beige"
+                fontWeight="bold"
+                position="relative"
+                _hover={{
+                  textDecoration: 'none',
+                  _after: { width: '100%' },
+                }}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-0.2rem',
+                  left: 0,
+                  width: 0,
+                  height: '2px',
+                  bg: 'beige',
+                  transition: 'width 0.3s ease',
+                }}
+              >
+                Log In
+              </Link>
+            </>
           )}
         </Flex>
 
@@ -233,14 +280,22 @@ const Navbar = () => {
                   >
                     Home
                   </Button>
-                  {menuItems.map((item) =>
-                    item === 'Logout' ? (
+                  {isAuthenticated ? (
+                    <>
                       <Button
-                        key={item}
-                        onClick={() => {
-                          logout(); // Call logout function
-                          onClose();
-                        }}
+                        as={RouterLink}
+                        to="/gallery"
+                        variant="link"
+                        fontSize="xl"
+                        fontFamily="'Satisfy', cursive"
+                        onClick={onClose}
+                        color="#A66A8A"
+                        _hover={{ textDecoration: 'none' }}
+                      >
+                        Gallery
+                      </Button>
+                      <Button
+                        onClick={logout}
                         variant="link"
                         fontSize="xl"
                         fontFamily="'Satisfy', cursive"
@@ -249,11 +304,12 @@ const Navbar = () => {
                       >
                         Logout
                       </Button>
-                    ) : (
+                    </>
+                  ) : (
+                    <>
                       <Button
-                        key={item}
                         as={RouterLink}
-                        to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                        to="/signup"
                         variant="link"
                         fontSize="xl"
                         fontFamily="'Satisfy', cursive"
@@ -261,9 +317,21 @@ const Navbar = () => {
                         color="#A66A8A"
                         _hover={{ textDecoration: 'none' }}
                       >
-                        {item}
+                        Sign Up
                       </Button>
-                    )
+                      <Button
+                        as={RouterLink}
+                        to="/login"
+                        variant="link"
+                        fontSize="xl"
+                        fontFamily="'Satisfy', cursive"
+                        onClick={onClose}
+                        color="#A66A8A"
+                        _hover={{ textDecoration: 'none' }}
+                      >
+                        Log In
+                      </Button>
+                    </>
                   )}
                 </Flex>
               </motion.div>
