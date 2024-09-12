@@ -152,15 +152,6 @@ const Navbar = () => {
               >
                 Gallery
               </Link>
-              <Text
-                fontSize="md"
-                color="beige"
-                fontWeight="bold"
-                position="relative"
-                display={['none', 'none', 'block']}
-              >
-                Logged in as {user?.username}
-              </Text>
               <Button
                 onClick={logout} 
                 fontSize="md"
@@ -171,6 +162,15 @@ const Navbar = () => {
               >
                 Logout
               </Button>
+              <Text
+                fontSize="md"
+                color="beige"
+                fontWeight="bold"
+                position="relative"
+                display={['none', 'none', 'block']}
+              >
+                Logged in as <Box as="span" fontFamily="'Chewy', cursive">{user?.username}</Box>
+              </Text>
             </>
           ) : (
             <>
@@ -304,9 +304,6 @@ const Navbar = () => {
                       >
                         Gallery
                       </Button>
-                      <Text fontSize="lg" color="#A66A8A">
-                        Logged in as {user?.username}
-                      </Text>
                       <Button
                         onClick={logout}
                         variant="link"
@@ -317,6 +314,9 @@ const Navbar = () => {
                       >
                         Logout
                       </Button>
+                      <Text fontSize="lg" color="#A66A8A" fontWeight="bold">
+                        Logged in as <Box as="span" fontFamily="'Chewy', cursive">{user?.username}</Box>
+                      </Text>
                     </>
                   ) : (
                     <>
