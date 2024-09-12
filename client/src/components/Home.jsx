@@ -302,10 +302,10 @@ const Home = () => {
   py="6rem"
   textAlign="center"
   bg="transparent"
-  backgroundImage="url('/flowers.png')"
+  backgroundImage="url('/love.png')"
   backgroundPosition="center"
   backgroundRepeat="no-repeat"
-  backgroundSize="cover"
+  backgroundSize="contain"
   minHeight="100vh"
   display="flex"
   flexDirection="column" 
@@ -347,7 +347,7 @@ const Home = () => {
       fontSize={{ base: '22px', md: '30px' }}
       fontFamily="'Satisfy', cursive"
       fontWeight='bold'
-      color='#CA85A0'
+      color='beige'
       textAlign="center"
       m="auto"
       overflow="hidden"
