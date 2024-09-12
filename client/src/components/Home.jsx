@@ -302,7 +302,7 @@ const Home = () => {
   py="6rem"
   textAlign="center"
   bg="transparent"
-  backgroundImage="url('/love.png')"
+  backgroundImage="url('/black-cat-2.png')"
   backgroundPosition="center"
   backgroundRepeat="no-repeat"
   backgroundSize="contain"
@@ -357,7 +357,7 @@ const Home = () => {
     </Text>
   </Box>
   <Box
-    bgImage="url('/antique-sewing.png')" 
+    bgImage="url('/heart.png')" 
     bgPosition="center"
     bgRepeat="no-repeat"
     bgSize="contain" 
@@ -372,8 +372,8 @@ const Home = () => {
     boxShadow="none" 
   >
     <Image
-      src="/antique-sewing.png" 
-      alt="Antique Sewing"
+      src="/heart.png" 
+      alt="Heart"
       borderRadius="md" 
       objectFit="contain"
       width="100%"
