@@ -10,19 +10,21 @@ import {
   useDisclosure,
   Divider,
   Text,
-  Image
+  Image,
 } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CgMenuGridO } from 'react-icons/cg';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext'; // Make sure this points to your AuthContext
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showCloseIcon, setShowCloseIcon] = useState(false);
+  const { user, logout } = useContext(AuthContext); // Access user and logout from context
 
-  const menuItems = ['Gallery', 'Sign Up', 'Log In'];
+  const menuItems = user ? ['Gallery', 'Logout'] : ['Sign Up', 'Log In']; // Conditionally set menu items
 
   useEffect(() => {
     if (isOpen) {
@@ -38,8 +40,8 @@ const Navbar = () => {
       opacity: 1,
       x: 0,
       transition: {
-        delayChildren: 0.5, 
-        staggerChildren: 0.5, 
+        delayChildren: 0.5,
+        staggerChildren: 0.5,
         duration: 0.5,
         ease: 'easeInOut',
       },
@@ -77,11 +79,7 @@ const Navbar = () => {
         <Spacer />
         <IconButton
           aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-          icon={
-            showCloseIcon
-              ? <CloseIcon />
-              : <CgMenuGridO color="beige" />
-          }
+          icon={showCloseIcon ? <CloseIcon /> : <CgMenuGridO color="beige" />}
           display={['block', 'block', 'none']}
           onClick={isOpen ? onClose : onOpen}
           variant="unstyled"
@@ -89,10 +87,14 @@ const Navbar = () => {
           color="beige"
           _hover={{ bg: 'none' }}
           _focus={{ boxShadow: 'none' }}
-          _active={{ transform: 'rotate(90deg)', transition: 'transform 0.3s ease-in-out' }}
+          _active={{
+            transform: 'rotate(90deg)',
+            transition: 'transform 0.3s ease-in-out',
+          }}
           mt="20px"
           mb="20px"
         />
+
         <Flex
           as="ul"
           display={['none', 'none', 'flex']}
@@ -110,9 +112,7 @@ const Navbar = () => {
             position="relative"
             _hover={{
               textDecoration: 'none',
-              _after: {
-                width: '100%',
-              },
+              _after: { width: '100%' },
             }}
             _after={{
               content: '""',
@@ -127,43 +127,50 @@ const Navbar = () => {
           >
             Home
           </Link>
-          {menuItems.map((item) => (
-            <Link
-              key={item}
-              as={RouterLink}
-              to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
-              fontSize="md"
-              color="beige"
-              fontWeight="bold"
-              position="relative"
-              _hover={{
-                textDecoration: 'none',
-                _after: {
-                  width: '100%',
-                },
-              }}
-              _after={{
-                content: '""',
-                position: 'absolute',
-                bottom: '-0.2rem',
-                left: 0,
-                width: 0,
-                height: '2px',
-                bg: 'beige',
-                transition: 'width 0.3s ease',
-              }}
-            >
-              {item}
-            </Link>
-          ))}
+          {menuItems.map((item) =>
+            item === 'Logout' ? (
+              <Button
+                key={item}
+                onClick={logout} // Trigger logout on button click
+                fontSize="md"
+                color="beige"
+                variant="unstyled"
+                fontWeight="bold"
+              >
+                Logout
+              </Button>
+            ) : (
+              <Link
+                key={item}
+                as={RouterLink}
+                to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                fontSize="md"
+                color="beige"
+                fontWeight="bold"
+                position="relative"
+                _hover={{
+                  textDecoration: 'none',
+                  _after: { width: '100%' },
+                }}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-0.2rem',
+                  left: 0,
+                  width: 0,
+                  height: '2px',
+                  bg: 'beige',
+                  transition: 'width 0.3s ease',
+                }}
+              >
+                {item}
+              </Link>
+            )
+          )}
         </Flex>
+
         {isOpen && (
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={menuVariants}
-          >
+          <motion.div initial="hidden" animate="visible" exit="exit" variants={menuVariants}>
             <Box
               position="fixed"
               top="0"
@@ -172,12 +179,7 @@ const Navbar = () => {
               height="100vh"
               bg="#F6CBD4"
               zIndex="overlay"
-              display="block"
               color="#A66A8A"
-              transition="opacity 0.5s ease"
-              sx={{
-                borderImage: "linear-gradient(to right, #F6CBD4, #A66A8A) 1",
-              }}
               borderTopLeftRadius="30px"
               borderBottomLeftRadius="30px"
               boxShadow="0 0 15px rgba(166, 106, 138, 0.8)"
@@ -185,14 +187,14 @@ const Navbar = () => {
               <motion.div variants={itemVariants}>
                 <Flex alignItems="center" justifyContent="space-between" mb="1rem">
                   <Flex alignItems="center" ml="20px">
-                    <Image src="black-cat-logo.png" alt="Black Cat Icon" boxSize="40px" marginRight="0.5rem" marginTop="10px" />
-                    <Text
-                      fontSize="2xl"
-                      fontWeight="bold"
-                      color="#A66A8A"
-                      fontFamily="'Satisfy', cursive"
-                      mt="20px"
-                    >
+                    <Image
+                      src="black-cat-logo.png"
+                      alt="Black Cat Icon"
+                      boxSize="40px"
+                      marginRight="0.5rem"
+                      marginTop="10px"
+                    />
+                    <Text fontSize="2xl" fontWeight="bold" color="#A66A8A" fontFamily="'Satisfy', cursive" mt="20px">
                       Menu
                     </Text>
                   </Flex>
@@ -231,21 +233,38 @@ const Navbar = () => {
                   >
                     Home
                   </Button>
-                  {menuItems.map((item) => (
-                    <Button
-                      key={item}
-                      as={RouterLink}
-                      to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
-                      variant="link"
-                      fontSize="xl"
-                      fontFamily="'Satisfy', cursive"
-                      onClick={onClose}
-                      color="#A66A8A"
-                      _hover={{ textDecoration: 'none' }}
-                    >
-                      {item}
-                    </Button>
-                  ))}
+                  {menuItems.map((item) =>
+                    item === 'Logout' ? (
+                      <Button
+                        key={item}
+                        onClick={() => {
+                          logout(); // Call logout function
+                          onClose();
+                        }}
+                        variant="link"
+                        fontSize="xl"
+                        fontFamily="'Satisfy', cursive"
+                        color="#A66A8A"
+                        _hover={{ textDecoration: 'none' }}
+                      >
+                        Logout
+                      </Button>
+                    ) : (
+                      <Button
+                        key={item}
+                        as={RouterLink}
+                        to={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                        variant="link"
+                        fontSize="xl"
+                        fontFamily="'Satisfy', cursive"
+                        onClick={onClose}
+                        color="#A66A8A"
+                        _hover={{ textDecoration: 'none' }}
+                      >
+                        {item}
+                      </Button>
+                    )
+                  )}
                 </Flex>
               </motion.div>
             </Box>
