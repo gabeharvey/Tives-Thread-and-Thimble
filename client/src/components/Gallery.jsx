@@ -7,7 +7,7 @@ import { useSpring, animated } from '@react-spring/web';
 const createSkewProps = (flips, index) => {
   return flips.map(flip =>
     useSpring({
-      transform: flip ? `skew(10deg, 10deg)` : `skew(0deg, 0deg)`, // Skew animation
+      transform: flip ? `skew(10deg, 10deg)` : `skew(0deg, 0deg)`, 
       config: { tension: 300, friction: 20 },
     })
   )[index];
@@ -69,7 +69,7 @@ const Gallery = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="beige" fontWeight="900">
+          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="red" fontWeight="900">
             Our Exquisite Gallery
           </Heading>
         </Box>

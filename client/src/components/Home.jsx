@@ -97,8 +97,8 @@ const Home = () => {
               as="h1"
               size="xl"
               mb="1rem"
-              fontFamily="'Shadows Into Light Two', cursive"
-              color="#36454F"
+              fontFamily="'Satisfy', cursive"
+              color="red"
               fontWeight="900"
             >
               Tive's (Tee-veh’s) Thread & Thimble
@@ -219,7 +219,7 @@ const Home = () => {
         backgroundSize="cover"
       >
         <Box mb="5rem">
-          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="#36454F" fontWeight="900">
+          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="red" fontWeight="900">
             Comfort Food
           </Heading>
           <Slider {...settings}>
@@ -358,7 +358,7 @@ const Home = () => {
       fontSize={{ base: '22px', md: '30px' }}
       fontFamily="'Satisfy', cursive"
       fontWeight='bold'
-      color='#36454F'
+      color='red'
       textAlign="center"
       m="auto"
       overflow="hidden"
