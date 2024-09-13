@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Box, Heading, Image } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useSpring, animated } from '@react-spring/web';
+import { motion } from 'framer-motion';
 
 const createSkewProps = (flips, index) => {
   return flips.map(flip =>
@@ -69,9 +70,22 @@ const Gallery = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="red" fontWeight="900">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0, fontWeight: 400 }} 
+          animate={{ scale: 1, opacity: 1, fontWeight: 900 }} 
+          transition={{ duration: 2, ease: 'easeOut' }} 
+        >
+          <Heading
+            as="h1"
+            size="xl"
+            mb="1rem"
+            fontFamily="'Satisfy', cursive"
+            color="red"
+            fontWeight="900"
+          >
             Our Exquisite Gallery
           </Heading>
+        </motion.div>
         </Box>
         <Slider {...settings}>
           {['ai-dress.png', 'ai-dress-1.png', 'ai-dress-2.png', 'ai-dress-3.png', 'ai-dress-4.png', 'ai-dress-5.png'].map((image, index) => (
