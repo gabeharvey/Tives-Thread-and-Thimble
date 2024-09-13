@@ -181,7 +181,7 @@ const Navbar = () => {
                 position="relative"
                 display={['none', 'none', 'block']}
               >
-                Logged in as <Box as="span" fontFamily="'Chewy', cursive">{user?.username}</Box>
+                Logged in as <Box as="span" fontFamily="'Shadows Into Light Two', cursive">{user?.username}</Box>
               </Text>
             </>
           ) : (
@@ -331,7 +331,7 @@ const Navbar = () => {
                         Logout
                       </Button>
                       <Text fontSize="lg" color="#A66A8A" fontWeight="bold">
-                        Logged in as <Box as="span" fontFamily="'Chewy', cursive">{user?.username}</Box>
+                        Logged in as <Box as="span" fontFamily="'Shadows Into Light Two', cursive">{user?.username}</Box>
                       </Text>
                     </>
                   ) : (
