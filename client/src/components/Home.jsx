@@ -87,7 +87,7 @@ const Home = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="beige" fontWeight="900">
+          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="#36454F" fontWeight="900">
             Tive's (Tee-veh’s) Thread & Thimble
           </Heading>
           <Link to="/gallery">
@@ -205,7 +205,7 @@ const Home = () => {
         backgroundSize="cover"
       >
         <Box mb="5rem">
-          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="beige" fontWeight="900">
+          <Heading as="h2" size="xl" mb="1rem" fontFamily="'Satisfy', cursive" color="#36454F" fontWeight="900">
             Comfort Food
           </Heading>
           <Slider {...settings}>
@@ -344,7 +344,7 @@ const Home = () => {
       fontSize={{ base: '22px', md: '30px' }}
       fontFamily="'Satisfy', cursive"
       fontWeight='bold'
-      color='beige'
+      color='#36454F'
       textAlign="center"
       m="auto"
       overflow="hidden"
