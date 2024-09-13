@@ -72,11 +72,28 @@ const Navbar = () => {
         >
           Tive's Thread & Thimble
         </Heading>
-
         <Spacer />
         <IconButton
           aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-          icon={showCloseIcon ? <CloseIcon /> : <CgMenuGridO color="beige" />}
+          icon={
+            showCloseIcon ? (
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                animate={{ y: [0, -5, 0] }} 
+                transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
+              >
+                <CloseIcon />
+              </motion.div>
+            ) : (
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                animate={{ y: [0, -5, 0] }} 
+                transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
+              >
+                <CgMenuGridO color="beige" />
+              </motion.div>
+            )
+          }
           display={['block', 'block', 'none']}
           onClick={isOpen ? onClose : onOpen}
           variant="unstyled"
@@ -84,14 +101,9 @@ const Navbar = () => {
           color="beige"
           _hover={{ bg: 'none' }}
           _focus={{ boxShadow: 'none' }}
-          _active={{
-            transform: 'rotate(90deg)',
-            transition: 'transform 0.3s ease-in-out',
-          }}
           mt="20px"
           mb="20px"
         />
-
         <Flex
           as="ul"
           display={['none', 'none', 'flex']}
@@ -257,7 +269,15 @@ const Navbar = () => {
                   </Flex>
                   <IconButton
                     aria-label="Close Menu"
-                    icon={<CloseIcon />}
+                    icon={
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    animate={{ y: [0, -5, 0] }} 
+                    transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
+                  >
+                    <CloseIcon />
+                  </motion.div>
+                    }
                     onClick={onClose}
                     variant="unstyled"
                     fontSize="24px"
@@ -266,10 +286,6 @@ const Navbar = () => {
                     mr="20px"
                     _hover={{ bg: 'none' }}
                     _focus={{ boxShadow: 'none' }}
-                    _active={{
-                      transform: 'rotate(90deg)',
-                      transition: 'transform 0.3s ease-in-out',
-                    }}
                   />
                 </Flex>
               </motion.div>

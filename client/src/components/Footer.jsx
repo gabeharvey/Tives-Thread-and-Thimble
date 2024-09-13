@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Flex, Link, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Flex, Link, Text, Icon, useBreakpointValue } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'; 
 
 const Footer = () => {
   const display = useBreakpointValue({ base: 'block', md: 'flex' });
@@ -26,6 +27,18 @@ const Footer = () => {
         </Link>
         <Link as={RouterLink} to="/privacypolicy" fontSize="md" _hover={{ textDecoration: 'underline' }} p="5px">
           Privacy Policy
+        </Link>
+      </Flex>
+
+      <Flex justify="center" align="center" gap="1.5rem" mb="1rem">
+        <Link href="https://www.facebook.com" isExternal _hover={{ color: 'white' }}>
+          <Icon as={FaFacebook} boxSize="2rem" color="beige" />
+        </Link>
+        <Link href="https://www.instagram.com" isExternal _hover={{ color: 'white' }}>
+          <Icon as={FaInstagram} boxSize="2rem" color="beige" />
+        </Link>
+        <Link href="https://www.twitter.com" isExternal _hover={{ color: 'white' }}>
+          <Icon as={FaTwitter} boxSize="2rem" color="beige" />
         </Link>
       </Flex>
 
