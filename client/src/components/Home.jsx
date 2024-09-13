@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { useSpring, animated } from '@react-spring/web';
 import quotes from '../utils/quotes.json';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const createSpringProps = (flips, index) => {
   return flips.map(flip =>
@@ -87,9 +88,22 @@ const Home = () => {
         mt={20}
       >
         <Box mb="5rem">
-          <Heading as="h1" size="xl" mb="1rem" fontFamily="'Shadows Into Light Two', cursive" color="#36454F" fontWeight="900">
-            Tive's (Tee-veh’s) Thread & Thimble
-          </Heading>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0, fontWeight: 400 }} 
+            animate={{ scale: 1, opacity: 1, fontWeight: 900 }} 
+            transition={{ duration: 2, ease: 'easeOut' }} 
+          >
+            <Heading
+              as="h1"
+              size="xl"
+              mb="1rem"
+              fontFamily="'Shadows Into Light Two', cursive"
+              color="#36454F"
+              fontWeight="900"
+            >
+              Tive's (Tee-veh’s) Thread & Thimble
+            </Heading>
+          </motion.div>
           <Link to="/gallery">
           <Button
             bg="#CA85A0"
