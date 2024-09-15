@@ -17,11 +17,9 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET;
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY); 
 
-// Filepath setup for ES module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// CORS setup to allow specific origins
 const allowedOrigins = [
   'http://localhost:5173',
   'https://tives-thread-and-thimble.onrender.com',
@@ -43,7 +41,6 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/tives-thread-and-thimble', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -51,7 +48,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/tives-thr
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// JWT middleware for protected routes
 const authenticateJWT = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.sendStatus(401);
@@ -63,7 +59,6 @@ const authenticateJWT = (req, res, next) => {
   });
 };
 
-// Payment route with Stripe
 app.post('/payment', async (req, res) => {
   const { amount, id } = req.body;
 
@@ -83,7 +78,6 @@ app.post('/payment', async (req, res) => {
   }
 });
 
-// Signup route
 app.post('/api/signup', async (req, res) => {
   const { username, email, password } = req.body;
   try {
@@ -105,7 +99,6 @@ app.post('/api/signup', async (req, res) => {
   }
 });
 
-// Login route
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -131,7 +124,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// Verify token route
 app.post('/api/verify-token', (req, res) => {
   const { token } = req.body;
   try {
@@ -151,7 +143,6 @@ app.post('/api/verify-token', (req, res) => {
   }
 });
 
-// Protected routes
 app.get('/api/protected', authenticateJWT, (req, res) => {
   res.status(200).json({ message: 'This is a protected route', user: req.user });
 });
@@ -172,18 +163,15 @@ app.get('/api/privacypolicy', authenticateJWT, (req, res) => {
   res.status(200).json({ message: 'Privacy Policy data' });
 });
 
-// Catch-all route to serve React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
