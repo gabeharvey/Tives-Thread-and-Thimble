@@ -15,14 +15,14 @@ import { CloseIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CgMenuGridO } from 'react-icons/cg';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showCloseIcon, setShowCloseIcon] = useState(false);
   const { isAuthenticated, user, logout } = useContext(AuthContext); 
-
+  const menuRef = useRef();
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => setShowCloseIcon(false), 200);
@@ -30,6 +30,18 @@ const Navbar = () => {
       setShowCloseIcon(false);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
 
   const menuVariants = {
     hidden: { opacity: 0, x: '100%' },
@@ -79,7 +91,7 @@ const Navbar = () => {
             showCloseIcon ? (
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                animate={{ y: [0, -5, 0] }} 
+                animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
               >
                 <CloseIcon />
@@ -87,7 +99,7 @@ const Navbar = () => {
             ) : (
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                animate={{ y: [0, -5, 0] }} 
+                animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
               >
                 <CgMenuGridO color="beige" />
@@ -164,8 +176,32 @@ const Navbar = () => {
               >
                 Gallery
               </Link>
+              <Link
+                as={RouterLink}
+                to="/shoppingcart"
+                fontSize="md"
+                color="beige"
+                fontWeight="bold"
+                position="relative"
+                _hover={{
+                  textDecoration: 'none',
+                  _after: { width: '100%' },
+                }}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-0.2rem',
+                  left: 0,
+                  width: 0,
+                  height: '2px',
+                  bg: 'beige',
+                  transition: 'width 0.3s ease',
+                }}
+              >
+                Shopping Cart
+              </Link>
               <Button
-                onClick={logout} 
+                onClick={logout}
                 fontSize="md"
                 color="beige"
                 variant="unstyled"
@@ -239,134 +275,209 @@ const Navbar = () => {
         </Flex>
 
         {isOpen && (
-          <motion.div initial="hidden" animate="visible" exit="exit" variants={menuVariants}>
-            <Box
-              position="fixed"
-              top="0"
-              right="0"
-              width="70%"
-              height="100vh"
-              bg="#F6CBD4"
-              zIndex="overlay"
-              color="#A66A8A"
-              borderTopLeftRadius="30px"
-              borderBottomLeftRadius="30px"
-              boxShadow="0 0 15px rgba(166, 106, 138, 0.8)"
-            >
-              <motion.div variants={itemVariants}>
-                <Flex alignItems="center" justifyContent="space-between" mb="1rem">
-                  <Flex alignItems="center" ml="20px">
-                    <Image
-                      src="black-cat-logo.png"
-                      alt="Black Cat Icon"
-                      boxSize="40px"
-                      marginRight="0.5rem"
-                      marginTop="10px"
-                    />
-                    <Text fontSize="2xl" fontWeight="bold" color="#A66A8A" fontFamily="'Satisfy', cursive" mt="20px">
-                      Menu
-                    </Text>
-                  </Flex>
-                  <IconButton
-                    aria-label="Close Menu"
-                    icon={
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    animate={{ y: [0, -5, 0] }} 
-                    transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
-                  >
-                    <CloseIcon />
-                  </motion.div>
-                    }
-                    onClick={onClose}
-                    variant="unstyled"
-                    fontSize="24px"
-                    color="#A66A8A"
-                    padding="10px"
-                    mr="20px"
-                    _hover={{ bg: 'none' }}
-                    _focus={{ boxShadow: 'none' }}
-                  />
-                </Flex>
+  <motion.div initial="hidden" animate="visible" exit="exit" variants={menuVariants}>
+    <Box
+      ref={menuRef}
+      position="fixed"
+      top="0"
+      right="0"
+      width="70%"
+      height="100vh"
+      bg="#F6CBD4"
+      zIndex="overlay"
+      color="#A66A8A"
+      borderTopLeftRadius="30px"
+      borderBottomLeftRadius="30px"
+      boxShadow="0 0 15px rgba(166, 106, 138, 0.8)"
+    >
+      <motion.div variants={itemVariants}>
+        <Flex alignItems="center" justifyContent="space-between" mb="1rem">
+          <Flex alignItems="center" ml="20px">
+            <Image
+              src="black-cat-logo.png"
+              alt="Black Cat Icon"
+              boxSize="40px"
+              marginRight="0.5rem"
+              marginTop="10px"
+            />
+            <Text fontSize="2xl" fontWeight="bold" color="#A66A8A" fontFamily="'Satisfy', cursive" mt="20px">
+              Menu
+            </Text>
+          </Flex>
+          <IconButton
+            aria-label="Close Menu"
+            icon={
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
+              >
+                <CloseIcon />
               </motion.div>
-              <motion.div variants={itemVariants}>
-                <Divider borderColor="#A66A8A" borderWidth="2px" borderStyle="solid" />
-              </motion.div>
-              <motion.div variants={itemVariants}>
-                <Flex direction="column" gap="2rem" color="#A66A8A" alignItems="flex-start" mt="2rem" ml="2rem">
-                  <Button
-                    as={RouterLink}
-                    to="/"
-                    variant="link"
-                    fontSize="xl"
-                    fontFamily="'Satisfy', cursive"
-                    onClick={onClose}
-                    color="#A66A8A"
-                    _hover={{ textDecoration: 'none' }}
-                  >
-                    Home
-                  </Button>
-                  {isAuthenticated ? (
-                    <>
-                      <Button
-                        as={RouterLink}
-                        to="/gallery"
-                        variant="link"
-                        fontSize="xl"
-                        fontFamily="'Satisfy', cursive"
-                        onClick={onClose}
-                        color="#A66A8A"
-                        _hover={{ textDecoration: 'none' }}
-                      >
-                        Gallery
-                      </Button>
-                      <Button
-                        onClick={logout}
-                        variant="link"
-                        fontSize="xl"
-                        fontFamily="'Satisfy', cursive"
-                        color="#A66A8A"
-                        _hover={{ textDecoration: 'none' }}
-                      >
-                        Logout
-                      </Button>
-                      <Text fontSize="lg" color="#A66A8A" fontWeight="bold">
-                        Logged in as <Box as="span" fontFamily="'Shadows Into Light Two', cursive">{user?.username}</Box>
-                      </Text>
-                    </>
-                  ) : (
-                    <>
-                      <Button
-                        as={RouterLink}
-                        to="/signup"
-                        variant="link"
-                        fontSize="xl"
-                        fontFamily="'Satisfy', cursive"
-                        onClick={onClose}
-                        color="#A66A8A"
-                        _hover={{ textDecoration: 'none' }}
-                      >
-                        Sign Up
-                      </Button>
-                      <Button
-                        as={RouterLink}
-                        to="/login"
-                        variant="link"
-                        fontSize="xl"
-                        fontFamily="'Satisfy', cursive"
-                        onClick={onClose}
-                        color="#A66A8A"
-                        _hover={{ textDecoration: 'none' }}
-                      >
-                        Log In
-                      </Button>
-                    </>
-                  )}
-                </Flex>
-              </motion.div>
-            </Box>
-          </motion.div>
-        )}
+            }
+            onClick={onClose}
+            variant="unstyled"
+            fontSize="24px"
+            color="#A66A8A"
+            padding="10px"
+            mr="20px"
+            mt="20px"
+          />
+        </Flex>
+        <Divider borderColor="#A66A8A" />
+        <Flex
+          direction="column"
+          alignItems="flex-start"
+          justifyContent="space-evenly"
+          h="80%"
+          ml="20px"
+          mt="20px"
+          gap="2rem"
+        >
+          <Link
+            as={RouterLink}
+            to="/"
+            fontSize="md"
+            fontWeight="bold"
+            _hover={{
+              textDecoration: 'none',
+              _after: { width: '100%' },
+            }}
+            _after={{
+              content: '""',
+              position: 'absolute',
+              bottom: '-0.2rem',
+              left: 0,
+              width: 0,
+              height: '2px',
+              bg: '#A66A8A',
+              transition: 'width 0.3s ease',
+            }}
+            onClick={onClose} 
+          >
+            Home
+          </Link>
+          <Link
+            as={RouterLink}
+            to="/gallery"
+            fontSize="md"
+            fontWeight="bold"
+            _hover={{
+              textDecoration: 'none',
+              _after: { width: '100%' },
+            }}
+            _after={{
+              content: '""',
+              position: 'absolute',
+              bottom: '-0.2rem',
+              left: 0,
+              width: 0,
+              height: '2px',
+              bg: '#A66A8A',
+              transition: 'width 0.3s ease',
+            }}
+            onClick={onClose} 
+          >
+            Gallery
+          </Link>
+          {isAuthenticated ? (
+            <>
+              <Link
+                as={RouterLink}
+                to="/shoppingcart"
+                fontSize="md"
+                fontWeight="bold"
+                _hover={{
+                  textDecoration: 'none',
+                  _after: { width: '100%' },
+                }}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-0.2rem',
+                  left: 0,
+                  width: 0,
+                  height: '2px',
+                  bg: '#A66A8A',
+                  transition: 'width 0.3s ease',
+                }}
+                onClick={onClose} 
+              >
+                Shopping Cart
+              </Link>
+              <Link
+                as={RouterLink}
+                to="/"
+                fontSize="md"
+                fontWeight="bold"
+                color="#A66A8A"
+                onClick={() => {
+                  logout();
+                  onClose(); 
+                }}
+                _hover={{ textDecoration: 'underline' }}
+              >
+                Logout
+              </Link>
+              <Text fontSize="md" fontWeight="bold" color="#A66A8A" mt="1rem">
+                Logged in as <Box as="span" fontFamily="'Shadows Into Light Two', cursive">{user?.username}</Box>
+              </Text>
+            </>
+          ) : (
+            <>
+              <Link
+                as={RouterLink}
+                to="/login"
+                fontSize="md"
+                fontWeight="bold"
+                _hover={{
+                  textDecoration: 'none',
+                  _after: { width: '100%' },
+                }}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-0.2rem',
+                  left: 0,
+                  width: 0,
+                  height: '2px',
+                  bg: '#A66A8A',
+                  transition: 'width 0.3s ease',
+                }}
+                onClick={onClose} 
+              >
+                Log In
+              </Link>
+              <Link
+                as={RouterLink}
+                to="/signup"
+                fontSize="md"
+                fontWeight="bold"
+                _hover={{
+                  textDecoration: 'none',
+                  _after: { width: '100%' },
+                }}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-0.2rem',
+                  left: 0,
+                  width: 0,
+                  height: '2px',
+                  bg: '#A66A8A',
+                  transition: 'width 0.3s ease',
+                }}
+                onClick={onClose} 
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </Flex>
+      </motion.div>
+    </Box>
+  </motion.div>
+)}
       </Flex>
     </Box>
   );
