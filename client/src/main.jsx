@@ -13,6 +13,7 @@ import NotFound from './components/NotFound.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import ShoppingCart from './components/ShoppingCart.jsx';
+import Checkout from './components/Checkout.jsx';
 
 const theme = extendTheme({
   styles: {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ShoppingCart />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: 'checkout',
+        element: (
+          <PrivateRoute>
+            <Checkout />
           </PrivateRoute>
         )
       },

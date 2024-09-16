@@ -28,7 +28,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const stripePromise = loadStripe('your-publishable-key-here'); 
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY); 
 
 function App() {
   return (

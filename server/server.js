@@ -59,8 +59,12 @@ const authenticateJWT = (req, res, next) => {
   });
 };
 
-app.post('/payment', async (req, res) => {
+app.post('/api/payment', async (req, res) => {
   const { amount, id } = req.body;
+
+  if (!amount || !id) {
+    return res.status(400).json({ message: 'Amount and payment method ID are required' });
+  }
 
   try {
     const payment = await stripe.paymentIntents.create({
@@ -69,14 +73,24 @@ app.post('/payment', async (req, res) => {
       description: 'Test payment',
       payment_method: id,
       confirm: true,
+      automatic_payment_methods: {
+        enabled: true,
+        allow_redirects: 'never',
+      },
     });
 
     res.json({ message: 'Payment successful', success: true });
   } catch (error) {
     console.error('Payment error:', error);
-    res.status(500).json({ message: 'Payment failed', success: false });
+    res.status(500).json({ 
+      message: 'Payment failed', 
+      success: false, 
+      error: error.type, 
+      detail: error.raw ? error.raw.message : error.message 
+    });
   }
 });
+
 
 app.post('/api/signup', async (req, res) => {
   const { username, email, password } = req.body;

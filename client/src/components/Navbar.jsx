@@ -357,7 +357,9 @@ const Navbar = () => {
           >
             Home
           </Link>
-          <Link
+          {isAuthenticated ? (
+            <>
+              <Link
             as={RouterLink}
             to="/gallery"
             fontSize="md"
@@ -380,8 +382,6 @@ const Navbar = () => {
           >
             Gallery
           </Link>
-          {isAuthenticated ? (
-            <>
               <Link
                 as={RouterLink}
                 to="/shoppingcart"
