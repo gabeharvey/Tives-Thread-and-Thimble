@@ -15,7 +15,7 @@
 
 ## Description
 
-This application is Tive's Thread and Thimble. Tive's Thread and Thimble is a React application that utilizes MERN Stack principles. This application allows the shopper to stay up-to-date with all of the latest fashion trends and make purchases. The user can Sign Up and access everything that Tive's Thread and Thimble has to offer including viewing the gallery and making a purchase.
+This application is Tive's Thread and Thimble. Tive's Thread and Thimble is a React application that utilizes MERN Stack principles. This application allows the shopper to stay up-to-date with all of the latest fashion trends and make purchases. The user can Sign Up and access everything that Tive's Thread and Thimble has to offer including viewing the gallery and making a purchase. Animations are deployed throughout the application to make the shopping experience fun and engaging for the customer.
 
 ## Installation
 
