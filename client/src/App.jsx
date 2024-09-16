@@ -28,6 +28,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// Stripe Info
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY); 
 
 function App() {
