@@ -23,7 +23,7 @@ const AboutUs = () => {
           Our Journey and Vision
         </Text>
         <Text fontSize="lg" mb="2rem" color="#A66A8A" fontFamily="'Satisfy', cursive">
-          Welcome to Tive's Thread and Thimble! We are passionate about bringing you the finest in fashion, curated with love and care.
+          Welcome to Tive's Thread and Thimble! We are passionate about bringing you the finest fashion, curated with love and care.
         </Text>
         <Text fontSize="lg" mb="2rem" color="#A66A8A" fontFamily="'Satisfy', cursive">
           Our journey began with a simple idea: to offer high-quality, stylish clothing that makes you feel confident and unique. Our team is dedicated to sourcing the best materials and creating designs that you’ll love.
